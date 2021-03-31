@@ -668,6 +668,30 @@
       <Project>{AB442337-82AA-9032-5D76-E9E64916DE83}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{33E3DD31-68CD-BEF6-A4B3-F6C5BA7AE8F4}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Addressables.csproj">
+      <Project>{71F4602D-9049-FF17-08DB-22B709076F2F}</Project>
+      <Name>UniTask.Addressables</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{9F3A1DE5-193D-CF00-F24E-42138703B0FD}</Project>
+      <Name>UniTask</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.DOTween.csproj">
+      <Project>{9D287B17-0AB5-CF48-B038-654F63BC1871}</Project>
+      <Name>UniTask.DOTween</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.TextMeshPro.csproj">
+      <Project>{1216862D-CBE7-359B-97C6-ED84D76AFDC5}</Project>
+      <Name>UniTask.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Linq.csproj">
+      <Project>{0BC72B6D-96F5-899F-BD23-1ADD34D1C64B}</Project>
+      <Name>UniTask.Linq</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

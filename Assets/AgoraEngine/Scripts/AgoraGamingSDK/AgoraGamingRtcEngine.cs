@@ -389,7 +389,7 @@ namespace agora_gaming_rtc
          */
         public int JoinChannel(string channelName, string info = "", uint uid = 0)
         {
-            return JoinChannelByKey("0069c20adeaf06641ddb7248182316b7039IACS2RH73PKZIpHUs/5JJ4C6k2q/hRBKlN3Z0t+n0H6JVAx+f9gAAAAAEABvgvvMD3dlYAEAAQAPd2Vg", channelName, info, uid);
+            return JoinChannelByKey(null, channelName, info, uid);
         }
 
         /** Allows a user to join a channel with token.

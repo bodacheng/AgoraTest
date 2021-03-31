@@ -85,6 +85,10 @@
     <Compile Include="Assets\AgoraEngine\Scripts\AgoraGamingSDK\tools\AgoraLog.cs" />
     <Compile Include="Assets\AgoraEngine\Scripts\AgoraGamingSDK\videoRender\VideoRender.cs" />
     <Compile Include="Assets\AgoraEngine\Scripts\AgoraGamingSDK\videoRender\VideoSurface.cs" />
+    <Compile Include="Assets\Scripts\PartySettingInput.cs" />
+    <Compile Include="Assets\Scripts\StartParty.cs" />
+    <Compile Include="Assets\Scripts\UIDirector.cs" />
+    <Compile Include="Assets\Scripts\VoicePartyCenter.cs" />
     <None Include="Assets\AgoraEngine\Plugins\Android\AgoraAudioKit.plugin\AndroidManifest.xml" />
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.16f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -651,7 +655,32 @@
       <HintPath>/Users/bo_dacheng/AgoraTest/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{33E3DD31-68CD-BEF6-A4B3-F6C5BA7AE8F4}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Addressables.csproj">
+      <Project>{71F4602D-9049-FF17-08DB-22B709076F2F}</Project>
+      <Name>UniTask.Addressables</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{9F3A1DE5-193D-CF00-F24E-42138703B0FD}</Project>
+      <Name>UniTask</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.DOTween.csproj">
+      <Project>{9D287B17-0AB5-CF48-B038-654F63BC1871}</Project>
+      <Name>UniTask.DOTween</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.TextMeshPro.csproj">
+      <Project>{1216862D-CBE7-359B-97C6-ED84D76AFDC5}</Project>
+      <Name>UniTask.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Linq.csproj">
+      <Project>{0BC72B6D-96F5-899F-BD23-1ADD34D1C64B}</Project>
+      <Name>UniTask.Linq</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

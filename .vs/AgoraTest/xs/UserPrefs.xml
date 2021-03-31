@@ -1,8 +1,12 @@
 ﻿<Properties StartupConfiguration="{AB442337-82AA-9032-5D76-E9E64916DE83}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AgoraEngine/Scripts/AgoraGamingSDK/AgoraGamingRtcEngine.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIDirector.cs">
     <Files>
-      <File FileName="Assets/AgoraEngine/Demo/HelloUnity3D.cs" Line="181" Column="31" />
-      <File FileName="Assets/AgoraEngine/Scripts/AgoraGamingSDK/AgoraGamingRtcEngine.cs" Line="392" Column="153" />
+      <File FileName="Assets/Scripts/StartParty.cs" Line="22" Column="1" />
+      <File FileName="Assets/AgoraEngine/Demo/HelloUnity3D.cs" Line="179" Column="10" />
+      <File FileName="Assets/AgoraEngine/Scripts/AgoraGamingSDK/AgoraGamingRtcEngine.cs" Line="414" Column="46" />
+      <File FileName="Assets/Scripts/PartySettingInput.cs" Line="6" Column="31" />
+      <File FileName="Assets/Scripts/VoicePartyCenter.cs" Line="10" Column="1" />
+      <File FileName="Assets/Scripts/UIDirector.cs" Line="8" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
