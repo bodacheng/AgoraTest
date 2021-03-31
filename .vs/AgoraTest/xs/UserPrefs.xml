@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{AB442337-82AA-9032-5D76-E9E64916DE83}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AgoraEngine/Scripts/AgoraGamingSDK/AgoraGamingRtcEngine.cs">
+    <Files>
+      <File FileName="Assets/AgoraEngine/Demo/HelloUnity3D.cs" Line="181" Column="31" />
+      <File FileName="Assets/AgoraEngine/Scripts/AgoraGamingSDK/AgoraGamingRtcEngine.cs" Line="392" Column="153" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7f021a06-1697-4b87-8cc8-b2fe379f0ffc" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
