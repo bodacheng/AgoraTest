@@ -85,7 +85,12 @@
     <Compile Include="Assets\AgoraEngine\Scripts\AgoraGamingSDK\tools\AgoraLog.cs" />
     <Compile Include="Assets\AgoraEngine\Scripts\AgoraGamingSDK\videoRender\VideoRender.cs" />
     <Compile Include="Assets\AgoraEngine\Scripts\AgoraGamingSDK\videoRender\VideoSurface.cs" />
-    <Compile Include="Assets\Scripts\PartySettingInput.cs" />
+    <Compile Include="Assets\Scripts\Layers\Basic\LayerRunner.cs" />
+    <Compile Include="Assets\Scripts\Layers\Basic\UILayer.cs" />
+    <Compile Include="Assets\Scripts\Layers\HoldingPartyLayer.cs" />
+    <Compile Include="Assets\Scripts\Layers\PartySettingLayer.cs" />
+    <Compile Include="Assets\Scripts\Layers\SingleModeLayer.cs" />
+    <Compile Include="Assets\Scripts\PartySettingManger.cs" />
     <Compile Include="Assets\Scripts\StartParty.cs" />
     <Compile Include="Assets\Scripts\UIDirector.cs" />
     <Compile Include="Assets\Scripts\VoicePartyCenter.cs" />
