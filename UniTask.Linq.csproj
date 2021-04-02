@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{0BC72B6D-96F5-899F-BD23-1ADD34D1C64B}</ProjectGuid>
+    <ProjectGuid>{ED897CAE-CB80-9BB2-2EC4-BC422FFF8C29}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>UniTask.Linq</AssemblyName>
@@ -320,6 +320,9 @@
     <Reference Include="UnityEditor">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.16f1/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>/Applications/Unity/Hub/Editor/2019.4.16f1/Unity.app/Contents/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Graphs">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.16f1/Unity.app/Contents/Managed/UnityEditor.Graphs.dll</HintPath>
     </Reference>
@@ -336,7 +339,7 @@
       <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>/Users/bo_dacheng/AgoraTest/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>/Users/bo_dacheng/Agora_Test/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.16f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -690,15 +693,15 @@
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.16f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>/Users/bo_dacheng/AgoraTest/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>/Users/bo_dacheng/Agora_Test/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>/Users/bo_dacheng/AgoraTest/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>/Users/bo_dacheng/Agora_Test/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UniTask.csproj">
-      <Project>{9F3A1DE5-193D-CF00-F24E-42138703B0FD}</Project>
+      <Project>{BD38E1DE-4C29-E8EC-65EC-0437A2442895}</Project>
       <Name>UniTask</Name>
     </ProjectReference>
   </ItemGroup>

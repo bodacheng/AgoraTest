@@ -37,8 +37,8 @@ public class PartySettingManger : MonoBehaviour
             return;
         }
 
-        voicePartyCenter.GetIRtcEngine().CreateChannel(channelName);
-        voicePartyCenter.GetIRtcEngine().JoinChannel(channelName, "extra", 0);
+        //voicePartyCenter.GetIRtcEngine().CreateChannel(channelName);
+        voicePartyCenter.GetIRtcEngine().JoinChannel("test", "extra", 0);
         await LayerRunner.Main.ChangeProcess(LayerMark.HoldingParty);
     }
 
@@ -56,7 +56,7 @@ public class PartySettingManger : MonoBehaviour
             return;
         }
 
-        voicePartyCenter.GetIRtcEngine().JoinChannel(channelName, "extra", 0);
+        voicePartyCenter.GetIRtcEngine().JoinChannel("test", "extra", 0);
     }
 
     public void LeaveChannel()
