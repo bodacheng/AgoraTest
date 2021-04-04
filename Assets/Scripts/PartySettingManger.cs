@@ -37,26 +37,16 @@ public class PartySettingManger : MonoBehaviour
             return;
         }
 
-        //voicePartyCenter.GetIRtcEngine().CreateChannel(channelName);
-        voicePartyCenter.GetIRtcEngine().JoinChannel("test", "extra", 0);
-        await LayerRunner.Main.ChangeProcess(LayerMark.HoldingParty);
+        voicePartyCenter.GetIRtcEngine().JoinChannel(channelName, "extra", 0);
+        await LayerRunner.Main.ChangeProcess(LayerMark.HoldingParty, channelName);
     }
 
     /// <summary>
     /// 无法理解如何获取对应app的房间列表，暂时以定值加入
     /// </summary>
-    void RandomJoinParty()
+    async void RandomJoinParty()
     {
-        string channelName = mChannelNameInputField.text.Trim();
-
-        Debug.Log(string.Format("tap joinChannel with channel name {0}", channelName));
-
-        if (string.IsNullOrEmpty(channelName))
-        {
-            return;
-        }
-
-        voicePartyCenter.GetIRtcEngine().JoinChannel("test", "extra", 0);
+        await LayerRunner.Main.ChangeProcess(LayerMark.HoldingParty);
     }
 
     public void LeaveChannel()

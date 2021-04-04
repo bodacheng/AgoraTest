@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿using PlayFab;
+using PlayFab.ClientModels;
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections.Generic;
+using System;
+using PlayFab.AuthenticationModels;
+using PlayFab.DataModels;
+using EntityKey = PlayFab.DataModels.EntityKey;
+
+using UnityEngine;
 using UnityEngine.UI;
 #if(UNITY_2018_3_OR_NEWER)
 using UnityEngine.Android;
@@ -15,6 +25,10 @@ public class VoicePartyCenter : MonoBehaviour
     public string appId = "9c20adeaf06641ddb7248182316b7039";
     private IRtcEngine mRtcEngine = null;
 
+    public static string currentVoiceRoom;
+
+    public static VoicePartyCenter Instance;
+
     public IRtcEngine GetIRtcEngine()
     {
         return mRtcEngine;
@@ -23,6 +37,7 @@ public class VoicePartyCenter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
 
 #if (UNITY_2018_3_OR_NEWER)
         if (Permission.HasUserAuthorizedPermission(Permission.Microphone))
@@ -40,6 +55,7 @@ public class VoicePartyCenter : MonoBehaviour
         {
             string joinSuccessMessage = string.Format("joinChannel callback uid: {0}, channel: {1}, version: {2}", uid, channelName, null);
             Debug.Log(joinSuccessMessage);
+            
         };
 
         mRtcEngine.OnLeaveChannel += (RtcStats stats) =>

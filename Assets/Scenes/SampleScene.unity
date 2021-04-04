@@ -1853,6 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813840a5af1c64d88950929b1534355f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appId: 8f13546e9a7b4beb954d69f8e3cb932a
 --- !u!4 &1054082501
 Transform:
   m_ObjectHideFlags: 0
@@ -2773,7 +2774,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voicePartyCenter: {fileID: 1054082500}
-  appId: 9c20adeaf06641ddb7248182316b7039
   maxMemberDropDown: {fileID: 955963562}
   mChannelNameInputField: {fileID: 279391101}
   holdPartyBtn: {fileID: 1995925187}

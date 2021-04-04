@@ -17,8 +17,12 @@ public class UIDirector : MonoBehaviour
     public Button HoldAParty;
     public Button JoinAParty;
 
+    public static UIDirector Instance;
+
     async void Start()
     {
+        Instance = this;
+
         // Button Feature
         HoldAParty.onClick.AddListener(()=> {
             GotoHoldPartySetting();
