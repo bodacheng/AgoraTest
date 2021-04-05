@@ -25,7 +25,7 @@ public class VoicePartyCenter : MonoBehaviour
     public string appId = "9c20adeaf06641ddb7248182316b7039";
     private IRtcEngine mRtcEngine = null;
 
-    public static string currentVoiceRoom;
+    public static string targetVoiceRoom;
 
     public static VoicePartyCenter Instance;
 

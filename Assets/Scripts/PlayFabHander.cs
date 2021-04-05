@@ -13,13 +13,16 @@ public static class PlayFabHander
 {
     static string entityId;
     static string entityType;
+    static PlayFab.ClientModels.EntityKey myAccEntityKey;
 
+    public static event Action<LoginResult> OnPlayFabLogin = delegate { };
+    public static event Action<ListMembershipResponse> ProcessAfterGetGroups = delegate { };
     /// <summary>
     /// PlayFab的login，其中extraSucessProcess是外部带入的，希望在login成功瞬间做的事情
     /// 而PlayFabHander.OnLogin 是PlayFab login必须执行的事情，也就是获得这个玩家的entityId和entityType
     /// </summary>
     /// <param name="extraSucessProcess"></param>
-    public static void Login(Action<LoginResult> extraSucessProcess)
+    public static void Login()
     {
         var request = new LoginWithCustomIDRequest
         {
@@ -30,29 +33,25 @@ public static class PlayFabHander
         // 固定执行PlayFabHander.OnLogin，同时还执行extraSucessProcess
         void SucessProcess(LoginResult loginResult)
         {
-            PlayFabHander.OnLogin(loginResult);
-            extraSucessProcess.Invoke(loginResult);
+            OnLoginRegular(loginResult);
+            OnPlayFabLogin.Invoke(loginResult);
         }
         PlayFabLogin.CustomIDLogin(request, SucessProcess, null);
     }
 
-    static void OnLogin(PlayFab.ClientModels.LoginResult result)
+    // PlayFab Login Regular Process
+    static void OnLoginRegular(LoginResult result)
     {
         entityId = result.EntityToken.Entity.Id;
         // The expected entity type is title_player_account.
         entityType = result.EntityToken.Entity.Type;
+        myAccEntityKey = result.EntityToken.Entity;
     }
 
     // 目前测试中的进入语音频道与退出语音频道时触发的playfab系列处理
-    public static void VoiceRoomCreatedProcess(LoginResult loginResult)
+    public static void VoiceRoomsCheck(LoginResult loginResult)
     {
-        CheckCurrentGroupsBeforeCreate(null);
-        //CreateGroup("testvoicegroup2");
-    }
-
-    public static void VoiceRoomJoinedProcess(LoginResult loginResult)
-    {
-
+        CheckCurrentGroups(null);
     }
 
     // Shared Group 相关代码 // 
@@ -67,7 +66,7 @@ public static class PlayFabHander
         return new PlayFab.GroupsModels.EntityKey { Id = entityId };
     }
 
-    public static void CreateGroup(string groupName)
+    static void CreateGroup(string groupName)
     {
         // A player-controlled entity creates a new group
         var request = new CreateGroupRequest { GroupName = groupName };
@@ -79,43 +78,42 @@ public static class PlayFabHander
         Debug.LogError(error.GenerateErrorReport());
     }
 
-    public static void CheckCurrentGroupsBeforeRandomJoin(PlayFab.GroupsModels.EntityKey entityKey)
+    static void CheckCurrentGroups(PlayFab.GroupsModels.EntityKey entityKey)
     {
         var request = new ListMembershipRequest { Entity = entityKey };
-        PlayFabGroupsAPI.ListMembership(request, CheckGroupsBeforeCreate, OnSharedError);
+        PlayFabGroupsAPI.ListMembership(request, ProcessAfterGetGroups, OnSharedError);
     }
 
-    private static void CheckGroupsBeforeRandomJoin(ListMembershipResponse response)
+    public static void CheckGroupsBeforeCreate(ListMembershipResponse response)
     {
+        var prevRequest = (ListMembershipRequest)response.Request;
+        string groupID;
         foreach (var pair in response.Groups)
         {
             GroupNameById[pair.Group.Id] = pair.GroupName;
             Debug.Log("group id: " + GroupNameById[pair.Group.Id]);
-            // 直接加入
+            if (pair.GroupName == VoicePartyCenter.targetVoiceRoom)
+            {
+                // 加入
+                VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(pair.GroupName, "extra", 0);
+                return;
+            }
+            //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, pair.Group.Id));
         }
+        CreateGroup(VoicePartyCenter.targetVoiceRoom);
     }
 
-    public static void CheckCurrentGroupsBeforeCreate(PlayFab.GroupsModels.EntityKey entityKey)
-    {
-        var request = new ListMembershipRequest { Entity = entityKey };
-        PlayFabGroupsAPI.ListMembership(request, CheckGroupsBeforeCreate, OnSharedError);
-    }
-
-    private static void CheckGroupsBeforeCreate(ListMembershipResponse response)
+    public static void CheckGroupsBeforeJoin(ListMembershipResponse response)
     {
         var prevRequest = (ListMembershipRequest)response.Request;
         foreach (var pair in response.Groups)
         {
             GroupNameById[pair.Group.Id] = pair.GroupName;
             Debug.Log("group id: " + GroupNameById[pair.Group.Id]);
-            if (pair.GroupName == VoicePartyCenter.currentVoiceRoom)
-            {
-                // 加入
-                return;
-            }
+            VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(pair.GroupName, "extra", 0);
+            return;
             //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, pair.Group.Id));
         }
-        CreateGroup(VoicePartyCenter.currentVoiceRoom);
     }
 
     private static void OnCreateGroup(CreateGroupResponse response)
@@ -124,6 +122,8 @@ public static class PlayFabHander
         var prevRequest = (CreateGroupRequest)response.Request;
         //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, response.Group.Id));
         GroupNameById[response.Group.Id] = response.GroupName;
+        // Create Playfab Group 同时加入agora的语音房间
+        VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(response.GroupName, "extra", 0);
     }
 
     public static void ApplyToGroup(string groupId, PlayFab.GroupsModels.EntityKey entityKey)
@@ -155,10 +155,10 @@ public static class PlayFabHander
         PlayFabClientAPI.UpdateUserPublisherData(new UpdateUserDataRequest()
         {
             Data = new Dictionary<string, string>() {
-                     { "currentVoiceRoom", VoicePartyCenter.currentVoiceRoom }
+                     { "currentVoiceRoom", VoicePartyCenter.targetVoiceRoom }
                 }
         },
-            result => Debug.Log("Successfully updated user data:" + VoicePartyCenter.currentVoiceRoom),
+            result => Debug.Log("Successfully updated user data:" + VoicePartyCenter.targetVoiceRoom),
             error =>
             {
                 Debug.Log("Got error setting user data Ancestor to Arthur");
@@ -182,10 +182,9 @@ public static class PlayFabHander
                 }
                 else
                 {
-                    VoicePartyCenter.currentVoiceRoom = result.Data["currentVoiceRoom"].Value;
-                    VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(VoicePartyCenter.currentVoiceRoom, "extra", 0);
-                    UIDirector.Instance.RefeshUI(LayerMark.HoldingParty);
-                    Debug.Log("helloCurrentrooom :" + VoicePartyCenter.currentVoiceRoom);
+                    VoicePartyCenter.targetVoiceRoom = result.Data["currentVoiceRoom"].Value;
+                    VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(VoicePartyCenter.targetVoiceRoom, "extra", 0);
+                    Debug.Log("helloCurrentrooom :" + VoicePartyCenter.targetVoiceRoom);
                 }
             },
             (error) => {
