@@ -1,7 +1,6 @@
 ﻿using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 using PlayFab.AuthenticationModels;
@@ -17,6 +16,7 @@ public static class PlayFabHander
 
     public static event Action<LoginResult> OnPlayFabLogin = delegate { };
     public static event Action<ListMembershipResponse> ProcessAfterGetGroups = delegate { };
+
     /// <summary>
     /// PlayFab的login，其中extraSucessProcess是外部带入的，希望在login成功瞬间做的事情
     /// 而PlayFabHander.OnLogin 是PlayFab login必须执行的事情，也就是获得这个玩家的entityId和entityType
@@ -95,6 +95,7 @@ public static class PlayFabHander
             if (pair.GroupName == VoicePartyCenter.targetVoiceRoom)
             {
                 // 加入
+                Debug.Log("试图建立的房间已经存在？加入：" + pair.GroupName);
                 VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(pair.GroupName, "extra", 0);
                 return;
             }

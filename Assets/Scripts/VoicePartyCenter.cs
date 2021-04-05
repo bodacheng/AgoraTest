@@ -1,14 +1,4 @@
-﻿using PlayFab;
-using PlayFab.ClientModels;
-using UnityEngine;
-using UnityEngine.UI;
-using System.Collections.Generic;
-using System;
-using PlayFab.AuthenticationModels;
-using PlayFab.DataModels;
-using EntityKey = PlayFab.DataModels.EntityKey;
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 #if(UNITY_2018_3_OR_NEWER)
 using UnityEngine.Android;
@@ -55,13 +45,14 @@ public class VoicePartyCenter : MonoBehaviour
         {
             string joinSuccessMessage = string.Format("joinChannel callback uid: {0}, channel: {1}, version: {2}", uid, channelName, null);
             Debug.Log(joinSuccessMessage);
-            
+            UIDirector.Instance.RefeshUI(LayerMark.HoldingParty);
         };
 
         mRtcEngine.OnLeaveChannel += (RtcStats stats) =>
         {
             string leaveChannelMessage = string.Format("onLeaveChannel callback duration {0}, tx: {1}, rx: {2}, tx kbps: {3}, rx kbps: {4}", stats.duration, stats.txBytes, stats.rxBytes, stats.txKBitRate, stats.rxKBitRate);
             Debug.Log(leaveChannelMessage);
+            UIDirector.Instance.RefeshUI(LayerMark.Single);
         };
 
         mRtcEngine.OnUserJoined += (uint uid, int elapsed) =>

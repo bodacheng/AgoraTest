@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 
 public class HoldingPartyLayer : UILayer
 {
@@ -25,4 +24,3 @@ public class HoldingPartyLayer : UILayer
     {
     }
 }
-
