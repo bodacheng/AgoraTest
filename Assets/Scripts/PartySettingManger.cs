@@ -31,13 +31,10 @@ public class PartySettingManger : MonoBehaviour
     {
         string channelName = mChannelNameInputField.text.Trim();
         Debug.Log(string.Format("tap joinChannel with channel name {0}", channelName));
-
         if (string.IsNullOrEmpty(channelName))
         {
             return;
         }
-
-        voicePartyCenter.GetIRtcEngine().JoinChannel(channelName, "extra", 0);
         await LayerRunner.Main.ChangeProcess(LayerMark.HoldingParty, channelName);
     }
 

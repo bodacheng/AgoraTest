@@ -46,7 +46,7 @@ public static class PlayFabHander
     // 目前测试中的进入语音频道与退出语音频道时触发的playfab系列处理
     public static void VoiceRoomCreatedProcess(LoginResult loginResult)
     {
-        ListGroups(null);
+        CheckCurrentGroupsBeforeCreate(null);
         //CreateGroup("testvoicegroup2");
     }
 
@@ -79,27 +79,48 @@ public static class PlayFabHander
         Debug.LogError(error.GenerateErrorReport());
     }
 
-    public static void ListGroups(PlayFab.GroupsModels.EntityKey entityKey)
+    public static void CheckCurrentGroupsBeforeRandomJoin(PlayFab.GroupsModels.EntityKey entityKey)
     {
         var request = new ListMembershipRequest { Entity = entityKey };
-        PlayFabGroupsAPI.ListMembership(request, OnListGroups, OnSharedError);
+        PlayFabGroupsAPI.ListMembership(request, CheckGroupsBeforeCreate, OnSharedError);
     }
 
-    private static void OnListGroups(ListMembershipResponse response)
+    private static void CheckGroupsBeforeRandomJoin(ListMembershipResponse response)
+    {
+        foreach (var pair in response.Groups)
+        {
+            GroupNameById[pair.Group.Id] = pair.GroupName;
+            Debug.Log("group id: " + GroupNameById[pair.Group.Id]);
+            // 直接加入
+        }
+    }
+
+    public static void CheckCurrentGroupsBeforeCreate(PlayFab.GroupsModels.EntityKey entityKey)
+    {
+        var request = new ListMembershipRequest { Entity = entityKey };
+        PlayFabGroupsAPI.ListMembership(request, CheckGroupsBeforeCreate, OnSharedError);
+    }
+
+    private static void CheckGroupsBeforeCreate(ListMembershipResponse response)
     {
         var prevRequest = (ListMembershipRequest)response.Request;
         foreach (var pair in response.Groups)
         {
             GroupNameById[pair.Group.Id] = pair.GroupName;
             Debug.Log("group id: " + GroupNameById[pair.Group.Id]);
+            if (pair.GroupName == VoicePartyCenter.currentVoiceRoom)
+            {
+                // 加入
+                return;
+            }
             //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, pair.Group.Id));
         }
+        CreateGroup(VoicePartyCenter.currentVoiceRoom);
     }
 
     private static void OnCreateGroup(CreateGroupResponse response)
     {
         Debug.Log("Group Created: " + response.GroupName + " - " + response.Group.Id);
-
         var prevRequest = (CreateGroupRequest)response.Request;
         //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, response.Group.Id));
         GroupNameById[response.Group.Id] = response.GroupName;
