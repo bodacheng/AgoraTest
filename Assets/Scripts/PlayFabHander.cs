@@ -14,6 +14,10 @@ public static class PlayFabHander
     static string entityType;
     static PlayFab.ClientModels.EntityKey myAccEntityKey;
 
+    static string group_entityId;
+    static string group_entityType;
+    static PlayFab.GroupsModels.EntityKey currentGroupEntityKey;
+
     public static event Action<LoginResult> OnPlayFabLogin = delegate { };
     public static event Action<ListMembershipResponse> ProcessAfterGetGroups = delegate { };
 
@@ -73,6 +77,18 @@ public static class PlayFabHander
         PlayFabGroupsAPI.CreateGroup(request, OnCreateGroup, OnSharedError);
     }
 
+    public static void DeleteGroup()
+    {
+        PlayFab.GroupsModels.EntityKey entityKey = new PlayFab.GroupsModels.EntityKey
+        {
+            Id = group_entityId,
+            Type = group_entityType
+        };
+        Debug.Log("尝试删除playfab group:" + VoicePartyCenter.targetVoiceRoom);
+        var request = new DeleteGroupRequest{ Group = entityKey };
+        PlayFabGroupsAPI.DeleteGroup(request, OnDeleteGroup, OnSharedError);
+    }
+
     private static void OnSharedError(PlayFab.PlayFabError error)
     {
         Debug.LogError(error.GenerateErrorReport());
@@ -87,7 +103,6 @@ public static class PlayFabHander
     public static void CheckGroupsBeforeCreate(ListMembershipResponse response)
     {
         var prevRequest = (ListMembershipRequest)response.Request;
-        string groupID;
         foreach (var pair in response.Groups)
         {
             GroupNameById[pair.Group.Id] = pair.GroupName;
@@ -121,10 +136,23 @@ public static class PlayFabHander
     {
         Debug.Log("Group Created: " + response.GroupName + " - " + response.Group.Id);
         var prevRequest = (CreateGroupRequest)response.Request;
+        currentGroupEntityKey = prevRequest.Entity;
+        group_entityId = response.Group.Id;
+        group_entityType = response.Group.Type;
+        if (currentGroupEntityKey != null)
+        {
+            // 根本没跑这里面
+            Debug.Log("已经获取了currentGroupEntityKey。ID ： "+ currentGroupEntityKey.Id + " Type:" + currentGroupEntityKey.Type);
+        }
         //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, response.Group.Id));
         GroupNameById[response.Group.Id] = response.GroupName;
         // Create Playfab Group 同时加入agora的语音房间
         VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(response.GroupName, "extra", 0);
+    }
+
+    private static void OnDeleteGroup(PlayFab.GroupsModels.EmptyResponse response)
+    {
+        Debug.Log("成功删除playfab的group");
     }
 
     public static void ApplyToGroup(string groupId, PlayFab.GroupsModels.EntityKey entityKey)

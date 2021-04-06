@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 #if(UNITY_2018_3_OR_NEWER)
 using UnityEngine.Android;
@@ -14,14 +15,25 @@ public class VoicePartyCenter : MonoBehaviour
     // After you entered the App ID, remove ## outside of Your App ID
     public string appId = "9c20adeaf06641ddb7248182316b7039";
     private IRtcEngine mRtcEngine = null;
-
+    static uint my_uid;
     public static string targetVoiceRoom;
+
+    static List<uint> remoteStreams = new List<uint>();
 
     public static VoicePartyCenter Instance;
 
     public IRtcEngine GetIRtcEngine()
     {
         return mRtcEngine;
+    }
+
+    void RemoveRemoteStreams(uint uid)
+    {
+        remoteStreams.Remove(uid);
+        if (remoteStreams.Count == 0)
+        {
+            PlayFabHander.DeleteGroup();
+        }
     }
 
     // Start is called before the first frame update
@@ -45,6 +57,8 @@ public class VoicePartyCenter : MonoBehaviour
         {
             string joinSuccessMessage = string.Format("joinChannel callback uid: {0}, channel: {1}, version: {2}", uid, channelName, null);
             Debug.Log(joinSuccessMessage);
+            my_uid = uid;
+            remoteStreams.Add(my_uid); // add remote stream id to list of users
             UIDirector.Instance.RefeshUI(LayerMark.HoldingParty);
         };
 
@@ -52,6 +66,7 @@ public class VoicePartyCenter : MonoBehaviour
         {
             string leaveChannelMessage = string.Format("onLeaveChannel callback duration {0}, tx: {1}, rx: {2}, tx kbps: {3}, rx kbps: {4}", stats.duration, stats.txBytes, stats.rxBytes, stats.txKBitRate, stats.rxKBitRate);
             Debug.Log(leaveChannelMessage);
+            RemoveRemoteStreams(my_uid); // add remote stream id to list of users
             UIDirector.Instance.RefeshUI(LayerMark.Single);
         };
 
@@ -65,6 +80,7 @@ public class VoicePartyCenter : MonoBehaviour
         {
             string userOfflineMessage = string.Format("onUserOffline callback uid {0} {1}", uid, reason);
             Debug.Log(userOfflineMessage);
+            RemoveRemoteStreams(uid);
         };
 
         mRtcEngine.OnVolumeIndication += (AudioVolumeInfo[] speakers, int speakerNumber, int totalVolume) =>

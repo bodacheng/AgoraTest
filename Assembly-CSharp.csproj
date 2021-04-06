@@ -66,6 +66,27 @@
   <ItemGroup>
     <Compile Include="Assets\AgoraEngine\Demo\HelloUnity3D.cs" />
     <Compile Include="Assets\AgoraEngine\Demo\LoggerBridge.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\LocalInvitation.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\Message\FileMessage.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\Message\IMessage.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\Message\ImageMessage.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\Message\TextMessage.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\RemoteInvitation.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\RtmCallEventHandler.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\RtmCallManager.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\RtmChannel.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\RtmChannelAttribute.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\RtmChannelEventHandler.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\RtmChannelMember.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\RtmClient.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\RtmClientEventHandler.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\RtmEnum.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\native\AgoraRtmApiNative.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\tools\AgoraCallbackObject.cs" />
+    <Compile Include="Assets\AgoraEngine\RTM-Engine\Rtm-Scripts\tools\AgoraCallbackQueue.cs" />
+    <Compile Include="Assets\AgoraEngine\RtmDemo\MessageDisplay.cs" />
+    <Compile Include="Assets\AgoraEngine\RtmDemo\RtmChatManager.cs" />
+    <Compile Include="Assets\AgoraEngine\RtmDemo\openURL.cs" />
     <Compile Include="Assets\AgoraEngine\Scripts\AgoraGamingSDK\AgoraCallback.cs" />
     <Compile Include="Assets\AgoraEngine\Scripts\AgoraGamingSDK\AgoraChannel.cs" />
     <Compile Include="Assets\AgoraEngine\Scripts\AgoraGamingSDK\AgoraChannelCallback.cs" />
@@ -96,6 +117,7 @@
     <Compile Include="Assets\Scripts\UIDirector.cs" />
     <Compile Include="Assets\Scripts\VoicePartyCenter.cs" />
     <None Include="Assets\AgoraEngine\Plugins\Android\AgoraAudioKit.plugin\AndroidManifest.xml" />
+    <None Include="Assets\AgoraEngine\RTM-Engine\Plugins\Android\AgoraRtmEngineKit.plugin\AndroidManifest.xml" />
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.9f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

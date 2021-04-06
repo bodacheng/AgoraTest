@@ -9,6 +9,7 @@ public class PartySettingManger : MonoBehaviour
     public Button holdPartyBtn;
     public Button joinPartyBtn;
     public Button partyStartBtn;
+    public Button partyLeaveBtn;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class PartySettingManger : MonoBehaviour
         holdPartyBtn.onClick.AddListener(StartToEditParty);
         joinPartyBtn.onClick.AddListener(RandomJoinParty);
         partyStartBtn.onClick.AddListener(StartChannel);
+        partyLeaveBtn.onClick.AddListener(LeaveChannel);
     }
 
     async void StartToEditParty()
