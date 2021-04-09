@@ -16,6 +16,7 @@ public class UIDirector : MonoBehaviour
 
     public Button HoldAParty;
     public Button JoinAParty;
+    public Button StopParty;
 
     public static UIDirector Instance;
 
@@ -26,6 +27,14 @@ public class UIDirector : MonoBehaviour
         // Button Feature
         HoldAParty.onClick.AddListener(()=> {
             GotoHoldPartySetting();
+        });
+
+        JoinAParty.onClick.AddListener(() => {
+            RandomJoinParty();
+        });
+
+        StopParty.onClick.AddListener(() => {
+            PlayFabHander.Quit();
         });
 
         SingleModeLayer singleModeLayer = new SingleModeLayer();
@@ -49,6 +58,11 @@ public class UIDirector : MonoBehaviour
         await LayerRunner.Main.ChangeProcess(LayerMark.PartySetting);
     }
 
+    async void RandomJoinParty()
+    {
+        await LayerRunner.Main.ChangeProcess(LayerMark.HoldingParty);
+    }
+
     public void RefeshUI(LayerMark layerMark)
     {
         switch (layerMark)
@@ -67,6 +81,25 @@ public class UIDirector : MonoBehaviour
                 BasicT.gameObject.SetActive(false);
                 PartySetting.gameObject.SetActive(false);
                 ConnectionMode_Host.gameObject.SetActive(true);
+                break;
+        }
+    }
+
+    public void RefreshPartyState(int state)
+    {
+        switch (state)
+        {
+            case -1: // 自身正在举行party 
+                HoldAParty.gameObject.SetActive(false);
+                JoinAParty.gameObject.SetActive(false);
+                StopParty.gameObject.SetActive(true);
+                break;
+            case 0: // 没有在party中
+                HoldAParty.gameObject.SetActive(true);
+                JoinAParty.gameObject.SetActive(true);
+                StopParty.gameObject.SetActive(false);
+                break;
+            case 1: // 正在参加别人的party 
                 break;
         }
     }

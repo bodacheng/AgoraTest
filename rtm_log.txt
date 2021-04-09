@@ -1,0 +1,375 @@
+
+
+INFO    2021-04-06T16:37:58:828    775; [rtm-API] RtmCallService
+INFO    2021-04-06T16:37:58:943 300383; [rlbs] request rs list from 123.56.235.221:8443 with fake ch report_lbs_1617694678943.......
+INFO    2021-04-06T16:37:59:282 300383; recognized uri 64 from server 123.56.235.221:8443
+INFO    2021-04-06T16:37:59:282 300383; [rlbs] [report servers]: 103.230.251.246
+INFO    2021-04-06T16:37:59:282 300383; [rlbs] [report servers]: 164.52.32.60
+INFO    2021-04-06T16:37:59:282 300383; [rlbs] [report servers]: 103.98.18.189
+INFO    2021-04-06T16:37:59:282 300383; [rlbs/t] responsed from 123.56.235.221:8443 with servers 103.230.251.246:8130
+INFO    2021-04-06T16:37:59:282 300383; [rs] updateServers 103.230.251.246:8130, priority 3
+INFO    2021-04-06T16:37:59:282 300383; [rs] updateServers 164.52.32.60:8130, priority 3
+INFO    2021-04-06T16:37:59:282 300383; [rs] updateServers 103.98.18.189:8130, priority 3
+INFO    2021-04-06T16:37:59:282 300383; create session builder 0x7fd403f874d0
+INFO    2021-04-06T16:37:59:283 300383; create dangling client connection 0x7fd403f63530
+INFO    2021-04-06T16:37:59:285 300383; [remote:103.230.251.246:8130] start 0th connect, send client hello 7362958|syn, tags: SNI :3130332d3233...(29), PDMD:, CPTO:4e4f4e432000...(129), CID: 8341370444087197753
+INFO    2021-04-06T16:37:59:469 300383; [remote:103.230.251.246:8130] start 1th connect, send client hello 7362958|syn, tags: SNI :3130332d3233...(29), PDMD:, CPTO:4e4f4e432000...(129), CID: 8341370444087197753
+INFO    2021-04-06T16:38:00:362 300383; [remote:103.230.251.246:8130] start 2th connect, send client hello 7362958|syn, tags: SNI :3130332d3233...(29), PDMD:, CPTO:4e4f4e432000...(129), CID: 8341370444087197753
+INFO    2021-04-06T16:38:03:068 300383; [remote:103.230.251.246:8130] start 3th connect, send client hello 7362958|syn, tags: SNI :3130332d3233...(29), PDMD:, CPTO:4e4f4e432000...(129), CID: 8341370444087197753
+INFO    2021-04-06T16:38:04:700 300383; [dns] parsed ip 52.68.71.190
+INFO    2021-04-06T16:38:04:700 300383; [dns] parsed ip 13.230.60.35
+INFO    2021-04-06T16:38:04:700 300383; [dns] parsed ip 54.178.26.110
+INFO    2021-04-06T16:38:04:700 300383; [ap] onParsedDns (normal) ap5.agora.io with err 0, 52.68.71.190, 13.230.60.35, 54.178.26.110, 
+INFO    2021-04-06T16:38:04:700 300383; [dns] parsed ip 18.166.216.254
+INFO    2021-04-06T16:38:04:700 300383; [dns] parsed ip 54.254.126.158
+INFO    2021-04-06T16:38:04:700 300383; [ap] onParsedDns (TLS) ap5-tls.agora.io with err 0, 18.166.216.254, 54.254.126.158, 
+INFO    2021-04-06T16:38:04:700 249143; [dns] parsed ip 13.230.60.35
+INFO    2021-04-06T16:38:04:700 249143; [dns] parsed ip 54.178.26.110
+INFO    2021-04-06T16:38:04:700 249143; [dns] parsed ip 52.68.71.190
+INFO    2021-04-06T16:38:04:700 249143; [ap] onParsedDns (normal) ap3.agora.io with err 0, 13.230.60.35, 54.178.26.110, 52.68.71.190, 
+INFO    2021-04-06T16:38:04:700 249143; [dns] parsed ip 54.254.126.158
+INFO    2021-04-06T16:38:04:700 249143; [dns] parsed ip 18.166.216.254
+INFO    2021-04-06T16:38:04:700 249143; [ap] onParsedDns (TLS) ap2-tls.agora.io with err 0, 54.254.126.158, 18.166.216.254, 
+INFO    2021-04-06T16:38:15:544    775; [rtm-API] createChannel: ***
+INFO    2021-04-06T16:38:17:471 300383; [remote:103.230.251.246:8130] start 4th connect, send client hello 7362958|syn, tags: SNI :3130332d3233...(29), PDMD:, CPTO:4e4f4e432000...(129), CID: 8341370444087197753
+INFO    2021-04-06T16:38:58:824 300383; CacheManager: save cache to storage elapsed 1
+INFO    2021-04-06T16:38:58:824 300383; [CS]: request config, install_id: E08D8CB12BDD4235AE2E007735F7BA7C
+INFO    2021-04-06T16:38:58:825 300383; [ap] AP AUT count changed from 3 to 1 in RTM
+INFO    2021-04-06T16:38:58:825 300383; [ap] selected 13.230.60.35:8443 (AUT crypto), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:38:58:825 300383; create session builder 0x7fd429a154f0
+INFO    2021-04-06T16:38:58:825 300383; [ap] selected 54.254.126.158:8443 (TCP-over-Tls), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:38:58:825 300383; connecting to 54.254.126.158:8443 handle ffbb2f70, 145
+INFO    2021-04-06T16:38:58:825 300383; create dangling client connection 0x7fd416c90b30
+INFO    2021-04-06T16:38:58:827 300383; [remote:13.230.60.35:8443] start 0th connect, send client hello 13739509|syn, tags: SNI :31332d323330...(26), PDMD:, CPTO:4e4f4e432000...(129), CID: 3394196153831168875
+INFO    2021-04-06T16:38:58:827 300383; [rs] **report stats: seq: 1, report list size 1, tx/rx: 0/0, cache size: 0
+INFO    2021-04-06T16:38:58:834 300383; [remote:13.230.60.35:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    2021-04-06T16:38:58:834 300383; [remote:13.230.60.35:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    2021-04-06T16:38:58:834 300383; [remote:13.230.60.35:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    2021-04-06T16:38:58:835 300383; [remote:13.230.60.35:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    2021-04-06T16:38:58:835 300383; [remote:13.230.60.35:8443] receive server hello piece id: 4, 5/10, complete
+INFO    2021-04-06T16:38:58:837 300383; [remote:13.230.60.35:8443] create connection 0x7fd418809000, self initial seq: 13739510, initial rtt: 10ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    2021-04-06T16:38:58:838 300383; [remote:13.230.60.35:8443] create session 0x7fd41ae9ea30
+INFO    2021-04-06T16:38:58:838 300383; [ap/aut] connected with 13.230.60.35:8443
+INFO    2021-04-06T16:38:58:838 300383; destroy dangling client connection 0x7fd416c90b30
+INFO    2021-04-06T16:38:58:843 300383; recognized uri 55 from server 13.230.60.35:8443
+INFO    2021-04-06T16:38:58:843 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:38:58:843 300383; [ap] report success incomplete done, 13.230.60.35:8443 (AUT crypto), incoming flag: 8, local flag: 64. Kept in 0x7fd4194be9b0.
+INFO    2021-04-06T16:38:58:843 300383; recognized uri 56 from server 13.230.60.35:8443
+INFO    2021-04-06T16:38:58:843 300383; [ap/u] **responsed from 13.230.60.35:8443, TDS(64).
+INFO    2021-04-06T16:38:58:843 300383; [ap] report success done, 13.230.60.35:8443 (AUT crypto) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:38:58:843 300383; [ap] onAPTdsRes success with config: {}, size: 0
+INFO    2021-04-06T16:38:58:844 300383; CacheManager: save cache to storage elapsed 1
+INFO    2021-04-06T16:38:58:844 300383; RTM config update request received: {}.
+INFO    2021-04-06T16:38:58:859 300383; [remote:13.230.60.35:8443] on connection close received, reason: 0, detail: 
+INFO    2021-04-06T16:38:58:859 300383; [remote:13.230.60.35:8443] start time wait, duration: 2000 ms
+INFO    2021-04-06T16:38:58:859 300383; [ap] aut socket error with 13.230.60.35:8443
+INFO    2021-04-06T16:38:58:859 300383; [remote:13.230.60.35:8443] destroy session 0x7fd41ae9ea30
+INFO    2021-04-06T16:38:58:859 300383; [remote:13.230.60.35:8443] destroy connection 0x7fd418809000
+INFO    2021-04-06T16:38:58:971 300383; [ap/tcp] connected with 54.254.126.158:8443
+INFO    2021-04-06T16:38:58:971 300383; [ap/tcp] connected with 54.254.126.158:8443 and flag 72.
+INFO    2021-04-06T16:38:58:971 300383; [ap] tcp - creating channel with 54.254.126.158:8443, ts 0, flag: 72
+INFO    2021-04-06T16:38:59:042 300383; recognized uri 55 from server 54.254.126.158:8443
+INFO    2021-04-06T16:38:59:042 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:38:59:042 300383; [ap] report success incomplete done, 54.254.126.158:8443 (TCP-over-Tls), incoming flag: 8, local flag: 64. Kept in 0x7fd4194be9b0.
+INFO    2021-04-06T16:38:59:044 300383; recognized uri 56 from server 54.254.126.158:8443
+INFO    2021-04-06T16:38:59:044 300383; [ap/t] **responsed from 54.254.126.158:8443, TDS(64).
+INFO    2021-04-06T16:38:59:044 300383; [ap] report success done, 54.254.126.158:8443 (TCP-over-Tls) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:38:59:044 300383; [ap] onAPTdsRes success with config: {}, size: 0
+INFO    2021-04-06T16:38:59:044 300383; CacheManager: save cache to storage elapsed 1
+INFO    2021-04-06T16:38:59:044 300383; RTM config update request received: {}.
+INFO    2021-04-06T16:38:59:044 300383; socket 145 54.254.126.158:8443 error 0x11, socket error: 0
+INFO    2021-04-06T16:38:59:717 300383; [remote:103.230.251.246:8130] start 5th connect, send client hello 7362958|syn, tags: SNI :3130332d3233...(29), PDMD:, CPTO:4e4f4e432000...(129), CID: 8341370444087197753
+INFO    2021-04-06T16:38:59:826 300383; [ap] AP AUT count changed from 3 to 1 in RTM
+INFO    2021-04-06T16:38:59:826 300383; [ap] selected 13.230.60.35:8443 (AUT crypto), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:38:59:826 300383; create session builder 0x7fd416c8b7e0
+INFO    2021-04-06T16:38:59:826 300383; [ap] selected 54.254.126.158:8443 (TCP-over-Tls), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:38:59:827 300383; connecting to 54.254.126.158:8443 handle 16c95270, 145
+INFO    2021-04-06T16:38:59:827 300383; create dangling client connection 0x7fd416c8f590
+INFO    2021-04-06T16:38:59:829 300383; [remote:13.230.60.35:8443] start 0th connect, send client hello 7224039|syn, tags: SNI :31332d323330...(26), PDMD:, CPTO:4e4f4e432000...(129), CID: 3451439267512187322
+INFO    2021-04-06T16:38:59:835 300383; [remote:13.230.60.35:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    2021-04-06T16:38:59:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    2021-04-06T16:38:59:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    2021-04-06T16:38:59:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    2021-04-06T16:38:59:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 4, 5/10, complete
+INFO    2021-04-06T16:38:59:838 300383; [remote:13.230.60.35:8443] create connection 0x7fd41b256000, self initial seq: 7224040, initial rtt: 9ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    2021-04-06T16:38:59:838 300383; [remote:13.230.60.35:8443] create session 0x7fd416c9b710
+INFO    2021-04-06T16:38:59:838 300383; [ap/aut] connected with 13.230.60.35:8443
+INFO    2021-04-06T16:38:59:838 300383; destroy dangling client connection 0x7fd416c8f590
+INFO    2021-04-06T16:38:59:844 300383; recognized uri 55 from server 13.230.60.35:8443
+INFO    2021-04-06T16:38:59:844 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:38:59:844 300383; [ap] report success done, 13.230.60.35:8443 (AUT crypto) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:38:59:855 300383; [remote:13.230.60.35:8443] on connection close received, reason: 0, detail: 
+INFO    2021-04-06T16:38:59:855 300383; [remote:13.230.60.35:8443] start time wait, duration: 2000 ms
+INFO    2021-04-06T16:38:59:855 300383; [ap] aut socket error with 13.230.60.35:8443
+INFO    2021-04-06T16:38:59:855 300383; [remote:13.230.60.35:8443] destroy session 0x7fd416c9b710
+INFO    2021-04-06T16:38:59:855 300383; [remote:13.230.60.35:8443] destroy connection 0x7fd41b256000
+INFO    2021-04-06T16:38:59:972 300383; [ap/tcp] connected with 54.254.126.158:8443
+INFO    2021-04-06T16:38:59:972 300383; [ap/tcp] connected with 54.254.126.158:8443 and flag 8.
+INFO    2021-04-06T16:38:59:972 300383; [ap] tcp - creating channel with 54.254.126.158:8443, ts 0, flag: 8
+INFO    2021-04-06T16:39:00:044 300383; recognized uri 55 from server 54.254.126.158:8443
+INFO    2021-04-06T16:39:00:044 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:00:044 300383; [ap] report success done, 54.254.126.158:8443 (TCP-over-Tls) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:00:045 300383; socket 145 54.254.126.158:8443 error 0x11, socket error: 0
+INFO    2021-04-06T16:39:00:829 300383; [ap] AP AUT count changed from 3 to 1 in RTM
+INFO    2021-04-06T16:39:00:829 300383; [ap] selected 13.230.60.35:8443 (AUT crypto), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:00:829 300383; create session builder 0x7fd417fd8070
+INFO    2021-04-06T16:39:00:829 300383; [ap] selected 54.254.126.158:8443 (TCP-over-Tls), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:00:829 300383; connecting to 54.254.126.158:8443 handle 17f91cd0, 145
+INFO    2021-04-06T16:39:00:829 300383; create dangling client connection 0x7fd429156e70
+INFO    2021-04-06T16:39:00:831 300383; [remote:13.230.60.35:8443] start 0th connect, send client hello 15873756|syn, tags: SNI :31332d323330...(26), PDMD:, CPTO:4e4f4e432000...(129), CID: 3527306244156260951
+INFO    2021-04-06T16:39:00:839 300383; [remote:13.230.60.35:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    2021-04-06T16:39:00:839 300383; [remote:13.230.60.35:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    2021-04-06T16:39:00:839 300383; [remote:13.230.60.35:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    2021-04-06T16:39:00:839 300383; [remote:13.230.60.35:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    2021-04-06T16:39:00:839 300383; [remote:13.230.60.35:8443] receive server hello piece id: 4, 5/10, complete
+INFO    2021-04-06T16:39:00:841 300383; [remote:13.230.60.35:8443] create connection 0x7fd41d2ecc00, self initial seq: 15873757, initial rtt: 10ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    2021-04-06T16:39:00:841 300383; [remote:13.230.60.35:8443] create session 0x7fd429a9f2e0
+INFO    2021-04-06T16:39:00:841 300383; [ap/aut] connected with 13.230.60.35:8443
+INFO    2021-04-06T16:39:00:841 300383; destroy dangling client connection 0x7fd429156e70
+INFO    2021-04-06T16:39:00:847 300383; recognized uri 55 from server 13.230.60.35:8443
+INFO    2021-04-06T16:39:00:847 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:00:847 300383; [ap] report success done, 13.230.60.35:8443 (AUT crypto) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:00:861 300383; [remote:13.230.60.35:8443] on connection close received, reason: 0, detail: 
+INFO    2021-04-06T16:39:00:861 300383; [remote:13.230.60.35:8443] start time wait, duration: 2000 ms
+INFO    2021-04-06T16:39:00:861 300383; [ap] aut socket error with 13.230.60.35:8443
+INFO    2021-04-06T16:39:00:861 300383; [remote:13.230.60.35:8443] destroy session 0x7fd429a9f2e0
+INFO    2021-04-06T16:39:00:861 300383; [remote:13.230.60.35:8443] destroy connection 0x7fd41d2ecc00
+INFO    2021-04-06T16:39:00:978 300383; [ap/tcp] connected with 54.254.126.158:8443
+INFO    2021-04-06T16:39:00:978 300383; [ap/tcp] connected with 54.254.126.158:8443 and flag 8.
+INFO    2021-04-06T16:39:00:978 300383; [ap] tcp - creating channel with 54.254.126.158:8443, ts 0, flag: 8
+INFO    2021-04-06T16:39:01:049 300383; recognized uri 55 from server 54.254.126.158:8443
+INFO    2021-04-06T16:39:01:049 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:01:049 300383; [ap] report success done, 54.254.126.158:8443 (TCP-over-Tls) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:01:051 300383; socket 145 54.254.126.158:8443 error 0x11, socket error: 0
+INFO    2021-04-06T16:39:01:826 300383; [ap] AP AUT count changed from 3 to 1 in RTM
+INFO    2021-04-06T16:39:01:826 300383; [ap] selected 13.230.60.35:8443 (AUT crypto), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:01:826 300383; create session builder 0x7fd403cde190
+INFO    2021-04-06T16:39:01:826 300383; [ap] selected 54.254.126.158:8443 (TCP-over-Tls), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:01:826 300383; connecting to 54.254.126.158:8443 handle 3ce39e0, 145
+INFO    2021-04-06T16:39:01:826 300383; create dangling client connection 0x7fd403cdb480
+INFO    2021-04-06T16:39:01:829 300383; [remote:13.230.60.35:8443] start 0th connect, send client hello 7393578|syn, tags: SNI :31332d323330...(26), PDMD:, CPTO:4e4f4e432000...(129), CID: 3602740107708170506
+INFO    2021-04-06T16:39:01:840 300383; [remote:13.230.60.35:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    2021-04-06T16:39:01:840 300383; [remote:13.230.60.35:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    2021-04-06T16:39:01:840 300383; [remote:13.230.60.35:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    2021-04-06T16:39:01:840 300383; [remote:13.230.60.35:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    2021-04-06T16:39:01:840 300383; [remote:13.230.60.35:8443] receive server hello piece id: 4, 5/10, complete
+INFO    2021-04-06T16:39:01:843 300383; [remote:13.230.60.35:8443] create connection 0x7fd41f008200, self initial seq: 7393579, initial rtt: 14ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    2021-04-06T16:39:01:843 300383; [remote:13.230.60.35:8443] create session 0x7fd41cd37e40
+INFO    2021-04-06T16:39:01:843 300383; [ap/aut] connected with 13.230.60.35:8443
+INFO    2021-04-06T16:39:01:843 300383; destroy dangling client connection 0x7fd403cdb480
+INFO    2021-04-06T16:39:01:849 300383; recognized uri 55 from server 13.230.60.35:8443
+INFO    2021-04-06T16:39:01:849 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:01:849 300383; [ap] report success done, 13.230.60.35:8443 (AUT crypto) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:01:865 300383; [remote:13.230.60.35:8443] on connection close received, reason: 0, detail: 
+INFO    2021-04-06T16:39:01:865 300383; [remote:13.230.60.35:8443] start time wait, duration: 2000 ms
+INFO    2021-04-06T16:39:01:865 300383; [ap] aut socket error with 13.230.60.35:8443
+INFO    2021-04-06T16:39:01:865 300383; [remote:13.230.60.35:8443] destroy session 0x7fd41cd37e40
+INFO    2021-04-06T16:39:01:865 300383; [remote:13.230.60.35:8443] destroy connection 0x7fd41f008200
+INFO    2021-04-06T16:39:01:981 300383; [ap/tcp] connected with 54.254.126.158:8443
+INFO    2021-04-06T16:39:01:981 300383; [ap/tcp] connected with 54.254.126.158:8443 and flag 8.
+INFO    2021-04-06T16:39:01:981 300383; [ap] tcp - creating channel with 54.254.126.158:8443, ts 0, flag: 8
+INFO    2021-04-06T16:39:02:052 300383; recognized uri 55 from server 54.254.126.158:8443
+INFO    2021-04-06T16:39:02:052 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:02:052 300383; [ap] report success done, 54.254.126.158:8443 (TCP-over-Tls) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:02:053 300383; socket 145 54.254.126.158:8443 error 0x11, socket error: 0
+INFO    2021-04-06T16:39:02:826 300383; [ap] AP AUT count changed from 3 to 1 in RTM
+INFO    2021-04-06T16:39:02:826 300383; [ap] selected 13.230.60.35:8443 (AUT crypto), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:02:826 300383; create session builder 0x7fd416c88d90
+INFO    2021-04-06T16:39:02:826 300383; [ap] selected 54.254.126.158:8443 (TCP-over-Tls), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:02:826 300383; connecting to 54.254.126.158:8443 handle 16cae3d0, 145
+INFO    2021-04-06T16:39:02:826 300383; create dangling client connection 0x7fd417ffdd70
+INFO    2021-04-06T16:39:02:829 300383; [remote:13.230.60.35:8443] start 0th connect, send client hello 7478348|syn, tags: SNI :31332d323330...(26), PDMD:, CPTO:4e4f4e432000...(129), CID: 3678390527806162098
+INFO    2021-04-06T16:39:02:839 300383; [remote:13.230.60.35:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    2021-04-06T16:39:02:840 300383; [remote:13.230.60.35:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    2021-04-06T16:39:02:840 300383; [remote:13.230.60.35:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    2021-04-06T16:39:02:840 300383; [remote:13.230.60.35:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    2021-04-06T16:39:02:840 300383; [remote:13.230.60.35:8443] receive server hello piece id: 4, 5/10, complete
+INFO    2021-04-06T16:39:02:842 300383; [remote:13.230.60.35:8443] create connection 0x7fd41c7ddc00, self initial seq: 7478349, initial rtt: 14ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    2021-04-06T16:39:02:842 300383; [remote:13.230.60.35:8443] create session 0x7fd417feb050
+INFO    2021-04-06T16:39:02:842 300383; [ap/aut] connected with 13.230.60.35:8443
+INFO    2021-04-06T16:39:02:842 300383; destroy dangling client connection 0x7fd417ffdd70
+INFO    2021-04-06T16:39:02:847 300383; recognized uri 55 from server 13.230.60.35:8443
+INFO    2021-04-06T16:39:02:847 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:02:847 300383; [ap] report success done, 13.230.60.35:8443 (AUT crypto) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:02:860 300383; [remote:13.230.60.35:8443] on connection close received, reason: 0, detail: 
+INFO    2021-04-06T16:39:02:860 300383; [remote:13.230.60.35:8443] start time wait, duration: 2000 ms
+INFO    2021-04-06T16:39:02:860 300383; [ap] aut socket error with 13.230.60.35:8443
+INFO    2021-04-06T16:39:02:860 300383; [remote:13.230.60.35:8443] destroy session 0x7fd417feb050
+INFO    2021-04-06T16:39:02:860 300383; [remote:13.230.60.35:8443] destroy connection 0x7fd41c7ddc00
+INFO    2021-04-06T16:39:02:981 300383; [ap/tcp] connected with 54.254.126.158:8443
+INFO    2021-04-06T16:39:02:981 300383; [ap/tcp] connected with 54.254.126.158:8443 and flag 8.
+INFO    2021-04-06T16:39:02:981 300383; [ap] tcp - creating channel with 54.254.126.158:8443, ts 0, flag: 8
+INFO    2021-04-06T16:39:03:053 300383; recognized uri 55 from server 54.254.126.158:8443
+INFO    2021-04-06T16:39:03:053 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:03:053 300383; [ap] report success done, 54.254.126.158:8443 (TCP-over-Tls) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:03:056 300383; socket 145 54.254.126.158:8443 error 0x11, socket error: 0
+INFO    2021-04-06T16:39:03:828 300383; [ap] AP AUT count changed from 3 to 1 in RTM
+INFO    2021-04-06T16:39:03:828 300383; [ap] selected 13.230.60.35:8443 (AUT crypto), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:03:828 300383; create session builder 0x7fd416c95ba0
+INFO    2021-04-06T16:39:03:828 300383; [ap] selected 54.254.126.158:8443 (TCP-over-Tls), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:03:829 300383; connecting to 54.254.126.158:8443 handle 16c8f480, 145
+INFO    2021-04-06T16:39:03:829 300383; create dangling client connection 0x7fd429aa4c20
+INFO    2021-04-06T16:39:03:832 300383; [remote:13.230.60.35:8443] start 0th connect, send client hello 2088272|syn, tags: SNI :31332d323330...(26), PDMD:, CPTO:4e4f4e432000...(129), CID: 3754185318934875048
+INFO    2021-04-06T16:39:03:841 300383; [remote:13.230.60.35:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    2021-04-06T16:39:03:842 300383; [remote:13.230.60.35:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    2021-04-06T16:39:03:842 300383; [remote:13.230.60.35:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    2021-04-06T16:39:03:842 300383; [remote:13.230.60.35:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    2021-04-06T16:39:03:842 300383; [remote:13.230.60.35:8443] receive server hello piece id: 4, 5/10, complete
+INFO    2021-04-06T16:39:03:844 300383; [remote:13.230.60.35:8443] create connection 0x7fd41d2ecc00, self initial seq: 2088273, initial rtt: 13ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    2021-04-06T16:39:03:844 300383; [remote:13.230.60.35:8443] create session 0x7fd429ac6270
+INFO    2021-04-06T16:39:03:845 300383; [ap/aut] connected with 13.230.60.35:8443
+INFO    2021-04-06T16:39:03:845 300383; destroy dangling client connection 0x7fd429aa4c20
+INFO    2021-04-06T16:39:03:851 300383; recognized uri 55 from server 13.230.60.35:8443
+INFO    2021-04-06T16:39:03:851 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:03:851 300383; [ap] report success done, 13.230.60.35:8443 (AUT crypto) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:03:863 300383; [remote:13.230.60.35:8443] on connection close received, reason: 0, detail: 
+INFO    2021-04-06T16:39:03:863 300383; [remote:13.230.60.35:8443] start time wait, duration: 2000 ms
+INFO    2021-04-06T16:39:03:863 300383; [ap] aut socket error with 13.230.60.35:8443
+INFO    2021-04-06T16:39:03:863 300383; [remote:13.230.60.35:8443] destroy session 0x7fd429ac6270
+INFO    2021-04-06T16:39:03:863 300383; [remote:13.230.60.35:8443] destroy connection 0x7fd41d2ecc00
+INFO    2021-04-06T16:39:03:981 300383; [ap/tcp] connected with 54.254.126.158:8443
+INFO    2021-04-06T16:39:03:981 300383; [ap/tcp] connected with 54.254.126.158:8443 and flag 8.
+INFO    2021-04-06T16:39:03:981 300383; [ap] tcp - creating channel with 54.254.126.158:8443, ts 0, flag: 8
+INFO    2021-04-06T16:39:04:052 300383; recognized uri 55 from server 54.254.126.158:8443
+INFO    2021-04-06T16:39:04:052 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:04:052 300383; [ap] report success done, 54.254.126.158:8443 (TCP-over-Tls) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:04:052 300383; socket 145 54.254.126.158:8443 error 0x11, socket error: 0
+INFO    2021-04-06T16:39:04:826 300383; [ap] AP AUT count changed from 3 to 1 in RTM
+INFO    2021-04-06T16:39:04:826 300383; [ap] selected 13.230.60.35:8443 (AUT crypto), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:04:826 300383; create session builder 0x7fd403ce0970
+INFO    2021-04-06T16:39:04:826 300383; [ap] selected 54.254.126.158:8443 (TCP-over-Tls), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:04:826 300383; connecting to 54.254.126.158:8443 handle 3ce12b0, 145
+INFO    2021-04-06T16:39:04:826 300383; create dangling client connection 0x7fd417ffdd70
+INFO    2021-04-06T16:39:04:828 300383; [remote:13.230.60.35:8443] start 0th connect, send client hello 11510706|syn, tags: SNI :31332d323330...(26), PDMD:, CPTO:4e4f4e432000...(129), CID: 3848170859934479106
+INFO    2021-04-06T16:39:04:840 300383; [remote:13.230.60.35:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    2021-04-06T16:39:04:841 300383; [remote:13.230.60.35:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    2021-04-06T16:39:04:841 300383; [remote:13.230.60.35:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    2021-04-06T16:39:04:841 300383; [remote:13.230.60.35:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    2021-04-06T16:39:04:841 300383; [remote:13.230.60.35:8443] receive server hello piece id: 4, 5/10, complete
+INFO    2021-04-06T16:39:04:843 300383; [remote:13.230.60.35:8443] create connection 0x7fd41d2ecc00, self initial seq: 11510707, initial rtt: 15ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    2021-04-06T16:39:04:843 300383; [remote:13.230.60.35:8443] create session 0x7fd429ad85d0
+INFO    2021-04-06T16:39:04:843 300383; [ap/aut] connected with 13.230.60.35:8443
+INFO    2021-04-06T16:39:04:843 300383; destroy dangling client connection 0x7fd417ffdd70
+INFO    2021-04-06T16:39:04:849 300383; recognized uri 55 from server 13.230.60.35:8443
+INFO    2021-04-06T16:39:04:849 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:04:849 300383; [ap] report success done, 13.230.60.35:8443 (AUT crypto) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:04:861 300383; [remote:13.230.60.35:8443] on connection close received, reason: 0, detail: 
+INFO    2021-04-06T16:39:04:861 300383; [remote:13.230.60.35:8443] start time wait, duration: 2000 ms
+INFO    2021-04-06T16:39:04:861 300383; [ap] aut socket error with 13.230.60.35:8443
+INFO    2021-04-06T16:39:04:861 300383; [remote:13.230.60.35:8443] destroy session 0x7fd429ad85d0
+INFO    2021-04-06T16:39:04:861 300383; [remote:13.230.60.35:8443] destroy connection 0x7fd41d2ecc00
+INFO    2021-04-06T16:39:04:979 300383; [ap/tcp] connected with 54.254.126.158:8443
+INFO    2021-04-06T16:39:04:979 300383; [ap/tcp] connected with 54.254.126.158:8443 and flag 8.
+INFO    2021-04-06T16:39:04:979 300383; [ap] tcp - creating channel with 54.254.126.158:8443, ts 0, flag: 8
+INFO    2021-04-06T16:39:05:050 300383; recognized uri 55 from server 54.254.126.158:8443
+INFO    2021-04-06T16:39:05:050 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:05:050 300383; [ap] report success done, 54.254.126.158:8443 (TCP-over-Tls) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:05:051 300383; socket 145 54.254.126.158:8443 error 0x11, socket error: 0
+INFO    2021-04-06T16:39:05:826 300383; [ap] AP AUT count changed from 3 to 1 in RTM
+INFO    2021-04-06T16:39:05:826 300383; [ap] selected 13.230.60.35:8443 (AUT crypto), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:05:826 300383; create session builder 0x7fd416caa700
+INFO    2021-04-06T16:39:05:826 300383; [ap] selected 54.254.126.158:8443 (TCP-over-Tls), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:05:826 300383; connecting to 54.254.126.158:8443 handle 16ca8050, 145
+INFO    2021-04-06T16:39:05:826 300383; create dangling client connection 0x7fd429ad7460
+INFO    2021-04-06T16:39:05:828 300383; [remote:13.230.60.35:8443] start 0th connect, send client hello 11595476|syn, tags: SNI :31332d323330...(26), PDMD:, CPTO:4e4f4e432000...(129), CID: 3923821280032470698
+INFO    2021-04-06T16:39:05:835 300383; [remote:13.230.60.35:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    2021-04-06T16:39:05:835 300383; [remote:13.230.60.35:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    2021-04-06T16:39:05:835 300383; [remote:13.230.60.35:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    2021-04-06T16:39:05:835 300383; [remote:13.230.60.35:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    2021-04-06T16:39:05:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 4, 5/10, complete
+INFO    2021-04-06T16:39:05:838 300383; [remote:13.230.60.35:8443] create connection 0x7fd41890f200, self initial seq: 11595477, initial rtt: 9ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    2021-04-06T16:39:05:838 300383; [remote:13.230.60.35:8443] create session 0x7fd41ae9ea30
+INFO    2021-04-06T16:39:05:838 300383; [ap/aut] connected with 13.230.60.35:8443
+INFO    2021-04-06T16:39:05:838 300383; destroy dangling client connection 0x7fd429ad7460
+INFO    2021-04-06T16:39:05:846 300383; recognized uri 55 from server 13.230.60.35:8443
+INFO    2021-04-06T16:39:05:846 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:05:846 300383; [ap] report success done, 13.230.60.35:8443 (AUT crypto) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:05:858 300383; [remote:13.230.60.35:8443] on connection close received, reason: 0, detail: 
+INFO    2021-04-06T16:39:05:858 300383; [remote:13.230.60.35:8443] start time wait, duration: 2000 ms
+INFO    2021-04-06T16:39:05:858 300383; [ap] aut socket error with 13.230.60.35:8443
+INFO    2021-04-06T16:39:05:858 300383; [remote:13.230.60.35:8443] destroy session 0x7fd41ae9ea30
+INFO    2021-04-06T16:39:05:858 300383; [remote:13.230.60.35:8443] destroy connection 0x7fd41890f200
+INFO    2021-04-06T16:39:05:975 300383; [ap/tcp] connected with 54.254.126.158:8443
+INFO    2021-04-06T16:39:05:975 300383; [ap/tcp] connected with 54.254.126.158:8443 and flag 8.
+INFO    2021-04-06T16:39:05:975 300383; [ap] tcp - creating channel with 54.254.126.158:8443, ts 0, flag: 8
+INFO    2021-04-06T16:39:06:046 300383; recognized uri 55 from server 54.254.126.158:8443
+INFO    2021-04-06T16:39:06:046 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:06:046 300383; [ap] report success done, 54.254.126.158:8443 (TCP-over-Tls) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:06:047 300383; socket 145 54.254.126.158:8443 error 0x11, socket error: 0
+INFO    2021-04-06T16:39:06:826 300383; [ap] AP AUT count changed from 3 to 1 in RTM
+INFO    2021-04-06T16:39:06:826 300383; [ap] selected 13.230.60.35:8443 (AUT crypto), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:06:826 300383; create session builder 0x7fd4191f93f0
+INFO    2021-04-06T16:39:06:826 300383; [ap] selected 54.254.126.158:8443 (TCP-over-Tls), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:06:826 300383; connecting to 54.254.126.158:8443 handle ffa18d70, 145
+INFO    2021-04-06T16:39:06:826 300383; create dangling client connection 0x7fd429156e70
+INFO    2021-04-06T16:39:06:829 300383; [remote:13.230.60.35:8443] start 0th connect, send client hello 11680245|syn, tags: SNI :31332d323330...(26), PDMD:, CPTO:4e4f4e432000...(129), CID: 3999471700130462290
+INFO    2021-04-06T16:39:06:835 300383; [remote:13.230.60.35:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    2021-04-06T16:39:06:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    2021-04-06T16:39:06:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    2021-04-06T16:39:06:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    2021-04-06T16:39:06:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 4, 5/10, complete
+INFO    2021-04-06T16:39:06:838 300383; [remote:13.230.60.35:8443] create connection 0x7fd41c18cc00, self initial seq: 11680246, initial rtt: 10ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    2021-04-06T16:39:06:838 300383; [remote:13.230.60.35:8443] create session 0x7fd41c817f30
+INFO    2021-04-06T16:39:06:838 300383; [ap/aut] connected with 13.230.60.35:8443
+INFO    2021-04-06T16:39:06:838 300383; destroy dangling client connection 0x7fd429156e70
+INFO    2021-04-06T16:39:06:845 300383; recognized uri 55 from server 13.230.60.35:8443
+INFO    2021-04-06T16:39:06:845 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:06:845 300383; [ap] report success done, 13.230.60.35:8443 (AUT crypto) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:06:859 300383; [remote:13.230.60.35:8443] on connection close received, reason: 0, detail: 
+INFO    2021-04-06T16:39:06:859 300383; [remote:13.230.60.35:8443] start time wait, duration: 2000 ms
+INFO    2021-04-06T16:39:06:859 300383; [ap] aut socket error with 13.230.60.35:8443
+INFO    2021-04-06T16:39:06:859 300383; [remote:13.230.60.35:8443] destroy session 0x7fd41c817f30
+INFO    2021-04-06T16:39:06:859 300383; [remote:13.230.60.35:8443] destroy connection 0x7fd41c18cc00
+INFO    2021-04-06T16:39:06:973 300383; [ap/tcp] connected with 54.254.126.158:8443
+INFO    2021-04-06T16:39:06:973 300383; [ap/tcp] connected with 54.254.126.158:8443 and flag 8.
+INFO    2021-04-06T16:39:06:973 300383; [ap] tcp - creating channel with 54.254.126.158:8443, ts 0, flag: 8
+INFO    2021-04-06T16:39:07:046 300383; recognized uri 55 from server 54.254.126.158:8443
+INFO    2021-04-06T16:39:07:046 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:07:046 300383; [ap] report success done, 54.254.126.158:8443 (TCP-over-Tls) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:07:047 300383; socket 145 54.254.126.158:8443 error 0x11, socket error: 0
+INFO    2021-04-06T16:39:07:826 300383; [ap] AP AUT count changed from 3 to 1 in RTM
+INFO    2021-04-06T16:39:07:826 300383; [ap] selected 13.230.60.35:8443 (AUT crypto), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:07:826 300383; create session builder 0x7fd41c818150
+INFO    2021-04-06T16:39:07:826 300383; [ap] selected 54.254.126.158:8443 (TCP-over-Tls), from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:07:826 300383; connecting to 54.254.126.158:8443 handle 19406f90, 145
+INFO    2021-04-06T16:39:07:826 300383; create dangling client connection 0x7fd416c4a670
+INFO    2021-04-06T16:39:07:829 300383; [remote:13.230.60.35:8443] start 0th connect, send client hello 11765015|syn, tags: SNI :31332d323330...(26), PDMD:, CPTO:4e4f4e432000...(129), CID: 4075122120228453882
+INFO    2021-04-06T16:39:07:835 300383; [remote:13.230.60.35:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    2021-04-06T16:39:07:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    2021-04-06T16:39:07:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    2021-04-06T16:39:07:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    2021-04-06T16:39:07:836 300383; [remote:13.230.60.35:8443] receive server hello piece id: 4, 5/10, complete
+INFO    2021-04-06T16:39:07:838 300383; [remote:13.230.60.35:8443] create connection 0x7fd41c18a600, self initial seq: 11765016, initial rtt: 10ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    2021-04-06T16:39:07:838 300383; [remote:13.230.60.35:8443] create session 0x7fd417fe2470
+INFO    2021-04-06T16:39:07:838 300383; [ap/aut] connected with 13.230.60.35:8443
+INFO    2021-04-06T16:39:07:838 300383; destroy dangling client connection 0x7fd416c4a670
+INFO    2021-04-06T16:39:07:845 300383; recognized uri 55 from server 13.230.60.35:8443
+INFO    2021-04-06T16:39:07:845 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:07:845 300383; [ap] report success done, 13.230.60.35:8443 (AUT crypto) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:07:857 300383; [remote:13.230.60.35:8443] on connection close received, reason: 0, detail: 
+INFO    2021-04-06T16:39:07:857 300383; [remote:13.230.60.35:8443] start time wait, duration: 2000 ms
+INFO    2021-04-06T16:39:07:857 300383; [ap] aut socket error with 13.230.60.35:8443
+INFO    2021-04-06T16:39:07:857 300383; [remote:13.230.60.35:8443] destroy session 0x7fd417fe2470
+INFO    2021-04-06T16:39:07:857 300383; [remote:13.230.60.35:8443] destroy connection 0x7fd41c18a600
+INFO    2021-04-06T16:39:07:973 300383; [ap/tcp] connected with 54.254.126.158:8443
+INFO    2021-04-06T16:39:07:973 300383; [ap/tcp] connected with 54.254.126.158:8443 and flag 8.
+INFO    2021-04-06T16:39:07:973 300383; [ap] tcp - creating channel with 54.254.126.158:8443, ts 0, flag: 8
+INFO    2021-04-06T16:39:08:044 300383; recognized uri 55 from server 54.254.126.158:8443
+INFO    2021-04-06T16:39:08:044 300383; [ap] PAPCdsRes (aka AP_CREATE_CHANNEL_RES4_CDS_URI, 55) is ignored in RTM.
+INFO    2021-04-06T16:39:08:044 300383; [ap] report success done, 54.254.126.158:8443 (TCP-over-Tls) removed from 0x7fd4194be9b0.
+INFO    2021-04-06T16:39:08:045 300383; socket 145 54.254.126.158:8443 error 0x11, socket error: 0
+ERROR   2021-04-06T16:39:19:727 249143; [rtm-ctx][0] leave channel failed, not login
+INFO    2021-04-06T16:39:19:727    775; [rtm-rc] remove channel : ***!
+INFO    2021-04-06T16:39:19:739    775; [rtm-API] rtm stop service, sync: 1
+INFO    2021-04-06T16:39:20:240    775; [rtm-note] stop async handler
+INFO    2021-04-06T16:39:20:240    775; async task worker thread exited gracefully
+INFO    2021-04-06T16:39:20:241    775; rtm service release, count:0
+
+INFO    2021-04-06T16:39:20:241    775; agora service release
+
+INFO    2021-04-06T16:39:20:241 300383; [rs] **report stats: seq: 2, report list size 2, tx/rx: 0/0, cache size: 0
+INFO    2021-04-06T16:39:20:241 300383; destroy dangling client connection 0x7fd403f63530
+INFO    2021-04-06T16:39:20:241 300383; Agora Service Worker Thread stopped: 0x7fd3fcf95600
+INFO    2021-04-06T16:39:20:243    775; CacheManager: save cache to storage elapsed 2
+INFO    2021-04-06T16:39:20:244    775; CacheManager: save report cache to storage failed
+INFO    2021-04-06T16:39:20:244 249143; Agora Service Worker Thread stopped: 0x7fd4194bf890

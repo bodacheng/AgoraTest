@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 #if(UNITY_2018_3_OR_NEWER)
 using UnityEngine.Android;
 #endif
@@ -15,8 +14,9 @@ public class VoicePartyCenter : MonoBehaviour
     // After you entered the App ID, remove ## outside of Your App ID
     public string appId = "9c20adeaf06641ddb7248182316b7039";
     private IRtcEngine mRtcEngine = null;
+
+    static string joinedChannel;
     static uint my_uid;
-    public static string targetVoiceRoom;
 
     static List<uint> remoteStreams = new List<uint>();
 
@@ -30,9 +30,10 @@ public class VoicePartyCenter : MonoBehaviour
     void RemoveRemoteStreams(uint uid)
     {
         remoteStreams.Remove(uid);
+        // remoteStreams 到底有没有正确反应房间的人数需要进一步研究
         if (remoteStreams.Count == 0)
         {
-            PlayFabHander.DeleteGroup();
+            PlayFabHander.DeleteGroup(joinedChannel);
         }
     }
 
@@ -56,6 +57,7 @@ public class VoicePartyCenter : MonoBehaviour
         mRtcEngine.OnJoinChannelSuccess += (string channelName, uint uid, int elapsed) =>
         {
             string joinSuccessMessage = string.Format("joinChannel callback uid: {0}, channel: {1}, version: {2}", uid, channelName, null);
+            joinedChannel = channelName;
             Debug.Log(joinSuccessMessage);
             my_uid = uid;
             remoteStreams.Add(my_uid); // add remote stream id to list of users
@@ -72,6 +74,7 @@ public class VoicePartyCenter : MonoBehaviour
 
         mRtcEngine.OnUserJoined += (uint uid, int elapsed) =>
         {
+            remoteStreams.Add(uid); // add remote stream id to list of users
             string userJoinedMessage = string.Format("onUserJoined callback uid {0} {1}", uid, elapsed);
             Debug.Log(userJoinedMessage);
         };
@@ -156,6 +159,12 @@ public class VoicePartyCenter : MonoBehaviour
 
         mRtcEngine.SetLogFilter(LOG_FILTER.INFO);
         mRtcEngine.SetChannelProfile(CHANNEL_PROFILE.CHANNEL_PROFILE_COMMUNICATION);
+    }
+
+    // 退出一个频道的逻辑是：先从playfab退，再从agora的频道退
+    public void LeaveChannel()
+    {
+        mRtcEngine.LeaveChannel();
     }
 
     void OnApplicationQuit()

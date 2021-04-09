@@ -112,7 +112,9 @@
     <Compile Include="Assets\Scripts\Layers\PartySettingLayer.cs" />
     <Compile Include="Assets\Scripts\Layers\SingleModeLayer.cs" />
     <Compile Include="Assets\Scripts\PartySettingManger.cs" />
-    <Compile Include="Assets\Scripts\PlayFabHander.cs" />
+    <Compile Include="Assets\Scripts\PlayFabHander\PlayFabHander.cs" />
+    <Compile Include="Assets\Scripts\PlayFabHander\PlayFabHander_Groups.cs" />
+    <Compile Include="Assets\Scripts\PlayFabHander\PlayFabHander_SharedGroup.cs" />
     <Compile Include="Assets\Scripts\PlayFabLogin.cs" />
     <Compile Include="Assets\Scripts\UIDirector.cs" />
     <Compile Include="Assets\Scripts\VoicePartyCenter.cs" />
