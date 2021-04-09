@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 这个模块你可以理解成，它就是针对那个开催party时候的设置页面的。
+/// </summary>
 public class PartySettingManger : MonoBehaviour
 {
     public VoicePartyCenter voicePartyCenter;
     public Dropdown maxMemberDropDown;
     public InputField mChannelNameInputField;
-    public Button holdPartyBtn;
-    public Button joinPartyBtn;
     public Button partyStartBtn;
-    public Button partyLeaveBtn;
 
     private void Awake()
     {
@@ -18,15 +18,7 @@ public class PartySettingManger : MonoBehaviour
 
     void Initialize()
     {
-        holdPartyBtn.onClick.AddListener(StartToEditParty);
-        joinPartyBtn.onClick.AddListener(RandomJoinParty);
         partyStartBtn.onClick.AddListener(StartChannel);
-        partyLeaveBtn.onClick.AddListener(LeaveChannel);
-    }
-
-    async void StartToEditParty()
-    {
-        await LayerRunner.Main.ChangeProcess(LayerMark.PartySetting);
     }
 
     async void StartChannel()
@@ -37,21 +29,8 @@ public class PartySettingManger : MonoBehaviour
         {
             return;
         }
-        await LayerRunner.Main.ChangeProcess(LayerMark.HoldingParty, channelName);
-    }
 
-    /// <summary>
-    /// 无法理解如何获取对应app的房间列表，暂时以定值加入
-    /// </summary>
-    async void RandomJoinParty()
-    {
-        await LayerRunner.Main.ChangeProcess(LayerMark.HoldingParty);
-    }
-
-    public void LeaveChannel()
-    {
-        voicePartyCenter.GetIRtcEngine().LeaveChannel();
-        string channelName = mChannelNameInputField.text.Trim();
-        Debug.Log(string.Format("left channel name {0}", channelName));
+        // channelName 是我们输入的昵称
+        await LayerRunner.Main.ChangeProcess(LayerMark.Party, channelName);
     }
 }

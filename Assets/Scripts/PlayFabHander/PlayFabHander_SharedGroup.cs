@@ -17,13 +17,15 @@ public static partial class PlayFabHander
         );
         void Temp(GetSharedGroupDataResult response)
         {
+            Debug.Log("获得的SharedGroupData如下："+ response.Data.ToString());
             bool normalChannelExist = false;
+
             foreach (var kv in response.Data)
             {
                 if (kv.Key == "name")
                 {
                     normalChannelExist = true;
-                    Debug.Log("获取到房间名：" + kv.Value);
+                    Debug.Log("获取到房间名：" + kv.Value.ToJson());
                 }
                 //Debug.Log(kv.Key + ":" + kv.Value);
             }
@@ -66,13 +68,33 @@ public static partial class PlayFabHander
 
     static void AddSharedGroupMember(string SharedGroupId)
     {
-        AddSharedGroupMembersRequest request = new AddSharedGroupMembersRequest() {
+        PlayFabClientAPI.GetSharedGroupData(new GetSharedGroupDataRequest() {
+            GetMembers = true,
             SharedGroupId = SharedGroupId
-        };
-        PlayFabClientAPI.AddSharedGroupMembers(
-            request,
-            resultCallback => { Debug.Log("sucess"); },
-            resultCallback => { Debug.Log("fail"); }
-        );
+        }, Temp, null);
+
+        void Temp(GetSharedGroupDataResult response)
+        {
+            foreach (string member in response.Members)
+            {
+                if (member == PlayFabHander.myPlayFabId)
+                {
+                    Debug.Log("Player " + member + " already in SharedGroupData");
+                    return;
+                }
+            }
+
+            AddSharedGroupMembersRequest request = new AddSharedGroupMembersRequest()
+            {
+                SharedGroupId = SharedGroupId,
+                PlayFabIds = new List<string>() { PlayFabHander.myPlayFabId }
+            };
+            Debug.Log("尝试把玩家" + PlayFabHander.myPlayFabId + "加入SharedGroup");
+            PlayFabClientAPI.AddSharedGroupMembers(
+                request,
+                resultCallback => { Debug.Log("sucessfully add player into sharedgroup"); },
+                OnSharedError
+            );
+        }
     }
 }

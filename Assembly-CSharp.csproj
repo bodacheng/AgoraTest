@@ -109,8 +109,9 @@
     <Compile Include="Assets\Scripts\Layers\Basic\LayerRunner.cs" />
     <Compile Include="Assets\Scripts\Layers\Basic\UILayer.cs" />
     <Compile Include="Assets\Scripts\Layers\HoldingPartyLayer.cs" />
+    <Compile Include="Assets\Scripts\Layers\LobbyLayer.cs" />
+    <Compile Include="Assets\Scripts\Layers\LoginLayer.cs" />
     <Compile Include="Assets\Scripts\Layers\PartySettingLayer.cs" />
-    <Compile Include="Assets\Scripts\Layers\SingleModeLayer.cs" />
     <Compile Include="Assets\Scripts\PartySettingManger.cs" />
     <Compile Include="Assets\Scripts\PlayFabHander\PlayFabHander.cs" />
     <Compile Include="Assets\Scripts\PlayFabHander\PlayFabHander_Groups.cs" />

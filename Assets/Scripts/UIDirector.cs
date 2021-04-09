@@ -37,12 +37,15 @@ public class UIDirector : MonoBehaviour
             PlayFabHander.Quit();
         });
 
-        SingleModeLayer singleModeLayer = new SingleModeLayer();
+        LoginLayer loginLayer = new LoginLayer();
+        LobbyLayer singleModeLayer = new LobbyLayer();
         PartySettingLayer partySettingLayer = new PartySettingLayer();
-        HoldingPartyLayer holdingPartyLayer = new HoldingPartyLayer();
-        LayerRunner.Main.AddNewLayer(LayerMark.Single, singleModeLayer);
+        PartyLayer holdingPartyLayer = new PartyLayer();
+
+        LayerRunner.Main.AddNewLayer(LayerMark.Login, loginLayer);
+        LayerRunner.Main.AddNewLayer(LayerMark.Lobby, singleModeLayer);
         LayerRunner.Main.AddNewLayer(LayerMark.PartySetting, partySettingLayer);
-        LayerRunner.Main.AddNewLayer(LayerMark.HoldingParty, holdingPartyLayer);
+        LayerRunner.Main.AddNewLayer(LayerMark.Party, holdingPartyLayer);
 
         // Add basic component for all layers
         foreach (KeyValuePair<LayerMark, UILayer> keyValuePair in LayerRunner.Main.layerDic)
@@ -50,7 +53,7 @@ public class UIDirector : MonoBehaviour
             keyValuePair.Value.uiDirector = this;
         }
 
-        await LayerRunner.Main.ChangeProcess(LayerMark.Single);
+        await LayerRunner.Main.ChangeProcess(LayerMark.Login);
     }
 
     async void GotoHoldPartySetting()
@@ -60,14 +63,14 @@ public class UIDirector : MonoBehaviour
 
     async void RandomJoinParty()
     {
-        await LayerRunner.Main.ChangeProcess(LayerMark.HoldingParty);
+        await LayerRunner.Main.ChangeProcess(LayerMark.Party);
     }
 
     public void RefeshUI(LayerMark layerMark)
     {
         switch (layerMark)
         {
-            case LayerMark.Single:
+            case LayerMark.Lobby:
                 BasicT.gameObject.SetActive(true);
                 PartySetting.gameObject.SetActive(false);
                 ConnectionMode_Host.gameObject.SetActive(false);
@@ -77,7 +80,7 @@ public class UIDirector : MonoBehaviour
                 PartySetting.gameObject.SetActive(true);
                 ConnectionMode_Host.gameObject.SetActive(false);
                 break;
-            case LayerMark.HoldingParty:
+            case LayerMark.Party:
                 BasicT.gameObject.SetActive(false);
                 PartySetting.gameObject.SetActive(false);
                 ConnectionMode_Host.gameObject.SetActive(true);

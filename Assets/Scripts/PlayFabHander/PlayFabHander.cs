@@ -8,19 +8,29 @@ using PlayFab.GroupsModels;
 
 public static partial class PlayFabHander
 {
+    public static string myPlayFabId;
     static string entityId;
     static string entityType;
 
     public static event Action<LoginResult> CustomOnPlayFabLogin = delegate { };
+    public static event Action CustomOnPlayFabJoinAgoraChannel = delegate { };
+
+    public static void TryStartJoinAgoraProcess()
+    {
+        CustomOnPlayFabJoinAgoraChannel.Invoke();
+    }
 
     /// <summary>
     /// Enter a channel, call this whenever you enter a planet 
     /// </summary>
-    /// <param name="groupid"></param>
-    public static void EnterAChannel(string groupid)
+    /// <param name="channelName"> Agora的频道id，Playfab的sharegroup id，以及group名 </param>
+    public static void EnterAChannel(string channelName)
     {
+        targetPlayfabGroupName = channelName;
+
         // 1. 加入到PlayFab的shared group里
-        AddSharedGroupMember(groupid);
+        // 如果玩家已经在这个sharedgroup里那这一步可能是多余的
+        AddSharedGroupMember(channelName);
         // 2. 更新玩家在playfab的数据 （ onplanet ）
         PlayFabClientAPI.UpdateUserData
         (
@@ -28,13 +38,13 @@ public static partial class PlayFabHander
             {
                 Data = new Dictionary<string, string>()
                 {
-                    { "OnPlanet", groupid },
+                    { "OnPlanet", channelName },
                 }
             },
             result => {
                 Debug.Log("Successfully updated user data");
                 // 3. 进去agora语音频道
-                VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(groupid, "extra", 0);
+                VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(channelName, "extra", 0);
             },
             error => {
                 Debug.Log(error.GenerateErrorReport());
@@ -86,6 +96,7 @@ public static partial class PlayFabHander
 
         void SucessProcess(LoginResult loginResult)
         {
+            Debug.Log("successfully logged into playfab");
             OnLoginRegular(loginResult);
             CustomOnPlayFabLogin.Invoke(loginResult);
         }
@@ -101,7 +112,7 @@ public static partial class PlayFabHander
     }
 
     // 目前测试中的进入语音频道与退出语音频道时触发的playfab系列处理
-    public static void VoiceRoomsCheck(LoginResult loginResult)
+    public static void VoiceRoomsCheck()
     {
         CurrentVoiceChannlesCheck(null);
     }

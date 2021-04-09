@@ -6,6 +6,7 @@ using System;
 public static partial class PlayFabHander
 {
     public static string targetGroupName;
+    public static string targetPlayfabGroupName;
 
     //public static readonly HashSet<KeyValuePair<string, string>> EntityGroupPairs = new HashSet<KeyValuePair<string, string>>();
     public static event Action<ListMembershipResponse> ProcessAfterGetGroups = delegate { };
@@ -36,7 +37,7 @@ public static partial class PlayFabHander
             {
                 // 加入
                 Debug.Log("试图建立的房间已经存在？加入：" + pair.GroupName);
-                EnterAChannel(SystemInfo.deviceUniqueIdentifier);
+                EnterAChannel(pair.GroupName);
                 return;
             }
             //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, pair.Group.Id));
@@ -54,7 +55,7 @@ public static partial class PlayFabHander
         foreach (var pair in response.Groups)
         {
             //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, pair.Group.Id));
-            EnterAChannel(pair.Group.Id);
+            EnterAChannel(pair.GroupName);
             return;
         }
     }
@@ -64,34 +65,46 @@ public static partial class PlayFabHander
     /// 而shared group data是为了保存某个房间的数据。因为目前的调查来看group那边貌似保存不了数据，但shareddatagroup却可以
     /// </summary>
     /// <param name="groupId"></param>
-    static void CreateGroup(string groupId)
+    static void CreateGroup(string groupName)
     {
         PlayFabGroupsAPI.CreateGroup(
             new CreateGroupRequest()
             {
-                GroupName = groupId
+                GroupName = groupName
             },
             resultCallback => {
-                Debug.Log("成功创建了group" + groupId);
+                Debug.Log("成功创建了group" + groupName);
                 // Group创建成功后，继而创建SharedGroup
-                CreateSharedGroup(targetGroupName);
+                CreateSharedGroup(targetGroupName);// 以本机机器码建立sharedgroupdata
             },
             OnSharedError);
     }
 
     // 当房间人数为0的时候，由客户端主动删除房间
-    public static void DeleteGroup(string groupId)
+    public static void DeleteGroup(string groupName)
     {
-        PlayFabGroupsAPI.DeleteGroup(
-            new DeleteGroupRequest() {
-                Group = new EntityKey
+        PlayFabGroupsAPI.GetGroup(
+            new GetGroupRequest() {
+                GroupName = groupName
+            }, Temp, OnSharedError);
+
+        void Temp(GetGroupResponse response)
+        {
+            Debug.Log("尝试将已经没有通话的语音房间删除：" + groupName);
+            PlayFabGroupsAPI.DeleteGroup(
+                new DeleteGroupRequest()
                 {
-                    Id = groupId,
-                    Type = "group"
-                }
-            },
-            resultCallback => {
-                Debug.Log("group已经删除" + groupId);
-            }, null);
+                    Group = new EntityKey
+                    {
+                        Id = response.Group.Id,
+                        Type = "group"
+                    }
+                },
+                resultCallback => {
+                    Debug.Log("group已经删除" + groupName);
+                },
+                OnSharedError
+            );
+        }
     }
 }
