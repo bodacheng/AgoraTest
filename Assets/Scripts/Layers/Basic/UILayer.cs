@@ -29,6 +29,7 @@ public abstract class UILayer
 
 public enum LayerMark
 {
+    Null,
     Login,
     Lobby,
     PartySetting,

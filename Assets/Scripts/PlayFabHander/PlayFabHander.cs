@@ -15,6 +15,11 @@ public static partial class PlayFabHander
     public static event Action<LoginResult> CustomOnPlayFabLogin = delegate { };
     public static event Action CustomOnPlayFabJoinAgoraChannel = delegate { };
 
+    public static void DisposeCustomOnPlayFabLogin()
+    {
+        CustomOnPlayFabLogin = null;
+    }
+
     public static void DisposeCustomOnPlayFabJoinAgoraChannel()
     {
         CustomOnPlayFabJoinAgoraChannel = null;
@@ -54,10 +59,29 @@ public static partial class PlayFabHander
             result => {
                 Debug.Log("Successfully updated user data");
                 // 3. 进去agora语音频道
-                VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(channelName, "extra", 0);
+                int returnValue = VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(channelName, "extra", 0);
+                if (returnValue == 0) // success
+                {
+
+                }
+                else if (returnValue < 0)
+                {
+                    PlayFabClientAPI.UpdateUserData(
+                        new UpdateUserDataRequest() {
+                            Data = null
+                        },
+                        resultCallback => {
+                            Debug.Log("没能登陆agora？ 回滚");
+                            RemoveSharedGroupMember(channelName, myPlayFabId);
+                        },
+                        OnSharedError
+                    );
+                    UIDirector.Instance.ReturnToLobby();
+                }
             },
             error => {
                 Debug.Log(error.GenerateErrorReport());
+                UIDirector.Instance.ReturnToLobby();
             }
         );
     }
@@ -65,7 +89,7 @@ public static partial class PlayFabHander
     /// <summary>
     /// 退出频道
     /// </summary>
-    public static void Quit()
+    public static async void Quit()
     {
         // 点击退出的话首先一定会从agora音声频道退出
         // 是否删除掉playfab上对应的group靠的应该是判断声网对应频道内还有没有玩家
@@ -90,7 +114,8 @@ public static partial class PlayFabHander
                 Debug.Log(error.GenerateErrorReport());
             }
         );
-        // 
+
+        await LayerRunner.Main.ChangeProcess(LayerMark.Lobby);
     }
 
     /// <summary>

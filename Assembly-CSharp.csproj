@@ -97,6 +97,8 @@
     <Compile Include="Assets\Scripts\PlayFabHander\PlayFabHander_SharedGroup.cs" />
     <Compile Include="Assets\Scripts\PlayFabLogin.cs" />
     <Compile Include="Assets\Scripts\UIDirector.cs" />
+    <Compile Include="Assets\Scripts\UIElements\PlayerInChannelList.cs" />
+    <Compile Include="Assets\Scripts\UIElements\PlayerInfoUI.cs" />
     <Compile Include="Assets\Scripts\VoicePartyCenter.cs" />
     <None Include="Assets\AgoraEngine\Plugins\Android\AgoraAudioKit.plugin\AndroidManifest.xml" />
     <Reference Include="UnityEngine">
@@ -709,6 +711,14 @@
     <ProjectReference Include="UniTask.Linq.csproj">
       <Project>{0BC72B6D-96F5-899F-BD23-1ADD34D1C64B}</Project>
       <Name>UniTask.Linq</Name>
+    </ProjectReference>
+    <ProjectReference Include="IngameDebugConsole.Runtime.csproj">
+      <Project>{255C1398-DFE6-D860-7689-A439EC83F649}</Project>
+      <Name>IngameDebugConsole.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="IngameDebugConsole.Editor.csproj">
+      <Project>{29449BC5-3631-88FE-85D2-DD087E2F1104}</Project>
+      <Name>IngameDebugConsole.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

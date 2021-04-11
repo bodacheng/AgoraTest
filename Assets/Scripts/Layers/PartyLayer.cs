@@ -5,6 +5,8 @@ public class PartyLayer : UILayer
     // 不带房间名进入，大体代表随机参加
     public override async UniTask LayerEnter()
     {
+        uiDirector.RefeshUI(LayerMark.Null);
+
         PlayFabHander.DisposeCustomOnPlayFabJoinAgoraChannel();
         PlayFabHander.CustomOnPlayFabJoinAgoraChannel += PlayFabHander.VoiceRoomsCheck;
 

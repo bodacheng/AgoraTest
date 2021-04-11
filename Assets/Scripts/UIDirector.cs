@@ -25,7 +25,7 @@ public class UIDirector : MonoBehaviour
         Instance = this;
 
         // Button Feature
-        HoldAParty.onClick.AddListener(()=> {
+        HoldAParty.onClick.AddListener(() => {
             GotoHoldPartySetting();
         });
 
@@ -85,6 +85,11 @@ public class UIDirector : MonoBehaviour
                 PartySetting.gameObject.SetActive(false);
                 ConnectionMode_Host.gameObject.SetActive(true);
                 break;
+            default:
+                BasicT.gameObject.SetActive(false);
+                PartySetting.gameObject.SetActive(false);
+                ConnectionMode_Host.gameObject.SetActive(false);
+                break;
         }
     }
 
@@ -105,5 +110,10 @@ public class UIDirector : MonoBehaviour
             case 1: // 正在参加别人的party 
                 break;
         }
+    }
+
+    public async void ReturnToLobby()
+    {
+        await LayerRunner.Main.ChangeProcess(LayerMark.Lobby);
     }
 }

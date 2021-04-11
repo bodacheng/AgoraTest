@@ -13,6 +13,8 @@ public class VoicePartyCenter : MonoBehaviour
     // Get your own App ID at https://dashboard.agora.io/
     // After you entered the App ID, remove ## outside of Your App ID
     public string appId = "9c20adeaf06641ddb7248182316b7039";
+    public PlayerInChannelList playerInChannelList;
+
     private IRtcEngine mRtcEngine = null;
     
     static uint my_uid;
@@ -25,9 +27,33 @@ public class VoicePartyCenter : MonoBehaviour
         return mRtcEngine;
     }
 
+    void AddRemoteStreans(uint uid)
+    {
+        if (!remoteStreams.Contains(uid))
+        {
+            remoteStreams.Add(uid);
+            Debug.Log("New player added uid:" + uid + ". Now there are " + remoteStreams.Count + "players in the room.");
+            playerInChannelList.NewUserEnter(uid.ToString());
+        }
+        else
+        {
+            Debug.Log("Logic error.Try add a player that already exist :" + uid);
+        }
+    }
+
     void RemoveRemoteStreams(uint uid)
     {
-        remoteStreams.Remove(uid);
+        if (remoteStreams.Contains(uid))
+        {
+            remoteStreams.Remove(uid);
+            Debug.Log("Now there are " + remoteStreams.Count + "players in the room.");
+            playerInChannelList.UserQuit(uid.ToString());
+        }
+        else
+        {
+            Debug.Log("Logic error.Try remove a player that not exist in list:" + uid);
+        }
+
         // remoteStreams 到底有没有正确反应房间的人数需要进一步研究
         if (remoteStreams.Count == 0)
         {
@@ -57,7 +83,7 @@ public class VoicePartyCenter : MonoBehaviour
             string joinSuccessMessage = string.Format("joinChannel callback uid: {0}, channel: {1}, version: {2}", uid, channelName, null);
             Debug.Log(joinSuccessMessage);
             my_uid = uid;
-            remoteStreams.Add(my_uid); // add remote stream id to list of users
+            AddRemoteStreans(my_uid); // add remote stream id to list of users
             UIDirector.Instance.RefeshUI(LayerMark.Party);
         };
 
@@ -66,14 +92,13 @@ public class VoicePartyCenter : MonoBehaviour
             string leaveChannelMessage = string.Format("onLeaveChannel callback duration {0}, tx: {1}, rx: {2}, tx kbps: {3}, rx kbps: {4}", stats.duration, stats.txBytes, stats.rxBytes, stats.txKBitRate, stats.rxKBitRate);
             Debug.Log(leaveChannelMessage);
             RemoveRemoteStreams(my_uid); // add remote stream id to list of users
-            UIDirector.Instance.RefeshUI(LayerMark.Lobby);
         };
 
         mRtcEngine.OnUserJoined += (uint uid, int elapsed) =>
         {
-            remoteStreams.Add(uid); // add remote stream id to list of users
-            string userJoinedMessage = string.Format("onUserJoined callback uid {0} {1}", uid, elapsed);
-            Debug.Log(userJoinedMessage);
+            AddRemoteStreans(uid); // add remote stream id to list of users
+            //string userJoinedMessage = string.Format("onUserJoined callback uid {0} {1}", uid, elapsed);
+            //Debug.Log(userJoinedMessage);
         };
 
         mRtcEngine.OnUserOffline += (uint uid, USER_OFFLINE_REASON reason) =>
