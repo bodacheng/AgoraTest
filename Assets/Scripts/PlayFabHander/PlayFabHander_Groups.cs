@@ -25,7 +25,7 @@ public static partial class PlayFabHander
     // 下面两个函数在实际运行时候是紧随上面
 
     /// <summary>
-    /// 开启语聊
+    /// 试图创建新房间，但先检查下同名房间是否已经存在，存在的话直接加入。
     /// </summary>
     /// <param name="response"></param>
     public static void CheckGroupsBeforeCreate(ListMembershipResponse response)
@@ -42,7 +42,8 @@ public static partial class PlayFabHander
             }
             //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, pair.Group.Id));
         }
-        // 确定没有重名房间已经存在的话，就建立房间
+        // 确定没有重名房间已经存在的话，就以自身机器码为名称建立房间
+        // 而昵称其实是记在了PlayFabHander.targetGroupName里，随后的成功处理中会以之命名sharedgroupdata
         CreateGroup(SystemInfo.deviceUniqueIdentifier);
     }
 
@@ -58,15 +59,17 @@ public static partial class PlayFabHander
             EnterAChannel(pair.GroupName);
             return;
         }
+        Debug.Log(" 没有找到正在语聊中的房间。 ");
     }
 
     /// <summary>
-    /// Group 的建立为的是其他玩家能够找到这个房间，因为playfab提供group 列表
+    /// Group 的建立为的是其他玩家能够找到这个房间，因为playfab提供group列表
     /// 而shared group data是为了保存某个房间的数据。因为目前的调查来看group那边貌似保存不了数据，但shareddatagroup却可以
     /// </summary>
-    /// <param name="groupId"></param>
+    /// <param name="groupName"> group 的昵称</param>
     static void CreateGroup(string groupName)
     {
+        Debug.Log("正在playfab上建立如下group："+ groupName);
         PlayFabGroupsAPI.CreateGroup(
             new CreateGroupRequest()
             {
@@ -75,7 +78,11 @@ public static partial class PlayFabHander
             resultCallback => {
                 Debug.Log("成功创建了group" + groupName);
                 // Group创建成功后，继而创建SharedGroup
-                CreateSharedGroup(targetGroupName);// 以本机机器码建立sharedgroupdata
+                CreateSharedGroup(
+                    targetGroupName,
+                    SystemInfo.deviceUniqueIdentifier,
+                    PlayFabHander.OnCreateSharedGroup,
+                    () => EnterAChannel(SystemInfo.deviceUniqueIdentifier));
             },
             OnSharedError);
     }
@@ -102,6 +109,7 @@ public static partial class PlayFabHander
                 },
                 resultCallback => {
                     Debug.Log("group已经删除" + groupName);
+                    RemoveSharedGroupMember(groupName, PlayFabHander.myPlayFabId);
                 },
                 OnSharedError
             );

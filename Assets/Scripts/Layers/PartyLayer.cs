@@ -5,10 +5,11 @@ public class PartyLayer : UILayer
     // 不带房间名进入，大体代表随机参加
     public override async UniTask LayerEnter()
     {
+        PlayFabHander.DisposeCustomOnPlayFabJoinAgoraChannel();
         PlayFabHander.CustomOnPlayFabJoinAgoraChannel += PlayFabHander.VoiceRoomsCheck;
-        PlayFabHander.ProcessAfterGetGroups += PlayFabHander.CheckGroupsBeforeJoin;
-        // 随机获取现有房间得依靠playfab的远程存储，所以相关处理其实在PlayFabHander.VoiceRoomJoinedProcess里
 
+        PlayFabHander.DisposeProcessAfterGetGroups();
+        PlayFabHander.ProcessAfterGetGroups += PlayFabHander.CheckGroupsBeforeJoin;
         PlayFabHander.TryStartJoinAgoraProcess();
     }
 
@@ -16,9 +17,12 @@ public class PartyLayer : UILayer
     public override async UniTask LayerEnter<T>(T t)
     {
         PlayFabHander.targetGroupName = t.ToString();
-        PlayFabHander.CustomOnPlayFabJoinAgoraChannel += PlayFabHander.VoiceRoomsCheck;
-        PlayFabHander.ProcessAfterGetGroups += PlayFabHander.CheckGroupsBeforeCreate;
 
+        PlayFabHander.DisposeCustomOnPlayFabJoinAgoraChannel();
+        PlayFabHander.CustomOnPlayFabJoinAgoraChannel += PlayFabHander.VoiceRoomsCheck;
+
+        PlayFabHander.DisposeProcessAfterGetGroups();
+        PlayFabHander.ProcessAfterGetGroups += PlayFabHander.CheckGroupsBeforeCreate;
         PlayFabHander.TryStartJoinAgoraProcess();
     }
 

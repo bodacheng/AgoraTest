@@ -15,6 +15,16 @@ public static partial class PlayFabHander
     public static event Action<LoginResult> CustomOnPlayFabLogin = delegate { };
     public static event Action CustomOnPlayFabJoinAgoraChannel = delegate { };
 
+    public static void DisposeCustomOnPlayFabJoinAgoraChannel()
+    {
+        CustomOnPlayFabJoinAgoraChannel = null;
+    }
+
+    public static void DisposeProcessAfterGetGroups()
+    {
+        ProcessAfterGetGroups = null;
+    }
+
     public static void TryStartJoinAgoraProcess()
     {
         CustomOnPlayFabJoinAgoraChannel.Invoke();
@@ -30,7 +40,7 @@ public static partial class PlayFabHander
 
         // 1. 加入到PlayFab的shared group里
         // 如果玩家已经在这个sharedgroup里那这一步可能是多余的
-        AddSharedGroupMember(channelName);
+        AddSharedGroupMember(channelName, myPlayFabId);
         // 2. 更新玩家在playfab的数据 （ onplanet ）
         PlayFabClientAPI.UpdateUserData
         (

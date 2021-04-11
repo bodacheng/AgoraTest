@@ -6,8 +6,6 @@ using UnityEngine.UI;
 /// </summary>
 public class PartySettingManger : MonoBehaviour
 {
-    public VoicePartyCenter voicePartyCenter;
-    public Dropdown maxMemberDropDown;
     public InputField mChannelNameInputField;
     public Button partyStartBtn;
 
@@ -18,10 +16,10 @@ public class PartySettingManger : MonoBehaviour
 
     void Initialize()
     {
-        partyStartBtn.onClick.AddListener(StartChannel);
+        partyStartBtn.onClick.AddListener(StartNewChannel);
     }
 
-    async void StartChannel()
+    async void StartNewChannel()
     {
         string channelName = mChannelNameInputField.text.Trim();
         Debug.Log(string.Format("tap joinChannel with channel name {0}", channelName));
