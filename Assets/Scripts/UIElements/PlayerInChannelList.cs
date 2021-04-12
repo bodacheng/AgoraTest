@@ -19,6 +19,7 @@ public class PlayerInChannelList : MonoBehaviour
     {
         PlayerInfoUI targetIcon = Dic[userID];
         Dic.Remove(userID);
-        GameObject.Destroy(targetIcon);
+        if (targetIcon.gameObject != null)
+            GameObject.Destroy(targetIcon.gameObject);
     }
 }

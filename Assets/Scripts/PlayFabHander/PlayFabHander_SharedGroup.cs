@@ -22,13 +22,13 @@ public static partial class PlayFabHander
         );
         void Temp(GetSharedGroupDataResult response)
         {
-            Debug.Log("获得的SharedGroupData如下：" + response.Data.ToString());
             bool normalChannelExist = false;
 
             foreach (var kv in response.Data)
             {
                 if (kv.Key == "name")
                 {
+                    Debug.Log("存在的一个sharedgroupdata的信息如下.  name:" + kv.Value.Value);
                     if (kv.Value.Value == groupNickName)
                     {
                         normalChannelExist = true;
@@ -42,7 +42,7 @@ public static partial class PlayFabHander
                 Debug.Log("房间不存在或不正常，尝试创建");
                 PlayFabClientAPI.CreateSharedGroup(
                     new CreateSharedGroupRequest() {
-                        SharedGroupId = SystemInfo.deviceUniqueIdentifier
+                        SharedGroupId = SharedGroupId
                     },
                     onCreateAction,
                     OnSharedError,

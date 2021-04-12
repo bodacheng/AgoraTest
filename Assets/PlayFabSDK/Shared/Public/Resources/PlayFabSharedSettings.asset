@@ -15,7 +15,7 @@ MonoBehaviour:
   TitleId: 5991B
   DeveloperSecretKey: E6DCWT335UF5WYWKHCACOOBZ9JJ4H6K7N9RCISG5MHS514PUIW
   ProductionEnvironmentUrl: 
-  RequestType: 2
+  RequestType: 0
   AdvertisingIdType: 
   AdvertisingIdValue: 
   DisableAdvertising: 0

@@ -131,7 +131,7 @@ public static partial class PlayFabHander
 
         void SucessProcess(LoginResult loginResult)
         {
-            Debug.Log("successfully logged into playfab");
+            Debug.Log("successfully logged into playfab.ID" + loginResult.PlayFabId);
             OnLoginRegular(loginResult);
             CustomOnPlayFabLogin.Invoke(loginResult);
         }

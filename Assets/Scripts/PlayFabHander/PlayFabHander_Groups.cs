@@ -5,8 +5,8 @@ using System;
 
 public static partial class PlayFabHander
 {
-    public static string targetGroupName;
-    public static string targetPlayfabGroupName;
+    public static string targetGroupName;// group自定义昵称
+    public static string targetPlayfabGroupName;//机器码
 
     //public static readonly HashSet<KeyValuePair<string, string>> EntityGroupPairs = new HashSet<KeyValuePair<string, string>>();
     public static event Action<ListMembershipResponse> ProcessAfterGetGroups = delegate { };
@@ -32,6 +32,7 @@ public static partial class PlayFabHander
     {
         foreach (var pair in response.Groups)
         {
+            Debug.Log("group name:" + pair.GroupName);
             // Group name是用房间创建者的设备id命名的
             if (pair.GroupName == SystemInfo.deviceUniqueIdentifier)
             {
@@ -60,6 +61,7 @@ public static partial class PlayFabHander
             return;
         }
         Debug.Log(" 没有找到正在语聊中的房间。 ");
+        UIDirector.Instance.RefeshUI(LayerMark.Lobby);
     }
 
     /// <summary>
