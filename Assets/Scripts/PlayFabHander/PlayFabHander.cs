@@ -45,7 +45,7 @@ public static partial class PlayFabHander
 
         // 1. 加入到PlayFab的shared group里
         // 如果玩家已经在这个sharedgroup里那这一步可能是多余的
-        AddSharedGroupMember(channelName, myPlayFabId);
+        //AddSharedGroupMember(channelName, myPlayFabId);
         // 2. 更新玩家在playfab的数据 （ onplanet ）
         PlayFabClientAPI.UpdateUserData
         (
@@ -96,6 +96,8 @@ public static partial class PlayFabHander
         // 没有的话，直接就把group删除。因为group的存在本来就是用来辅助我们记录到底有什么频道正在通话
         // 对应的处理其实是在LeaveChannel所触发的行为里，在VoicePartyCenter那边。
         VoicePartyCenter.Instance.LeaveChannel();
+
+        //RemoveMember(myPlayFabId);
 
         // 然后，应该抹除掉在playfab上关于「在哪个星球」的信息
         PlayFabClientAPI.UpdateUserData

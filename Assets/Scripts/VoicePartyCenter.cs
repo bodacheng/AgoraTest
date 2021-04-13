@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using PlayFab.GroupsModels;
+using PlayFab;
 #if(UNITY_2018_3_OR_NEWER)
 using UnityEngine.Android;
 #endif
@@ -57,7 +59,7 @@ public class VoicePartyCenter : MonoBehaviour
         // remoteStreams 到底有没有正确反应房间的人数需要进一步研究
         if (remoteStreams.Count == 0)
         {
-            PlayFabHander.DeleteGroup(PlayFabHander.targetPlayfabGroupName);
+            //PlayFabHander.DeleteGroup(PlayFabHander.targetPlayfabGroupName);
         }
     }
 
@@ -92,6 +94,7 @@ public class VoicePartyCenter : MonoBehaviour
             string leaveChannelMessage = string.Format("onLeaveChannel callback duration {0}, tx: {1}, rx: {2}, tx kbps: {3}, rx kbps: {4}", stats.duration, stats.txBytes, stats.rxBytes, stats.txKBitRate, stats.rxKBitRate);
             Debug.Log(leaveChannelMessage);
             RemoveRemoteStreams(my_uid); // add remote stream id to list of users
+            playerInChannelList.Clear();
         };
 
         mRtcEngine.OnUserJoined += (uint uid, int elapsed) =>

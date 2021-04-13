@@ -5,6 +5,8 @@ using System;
 
 public static partial class PlayFabHander
 {
+    static string tempGroupName = "fjiewjfoiwejoifjwoiefjewif"; 
+
     public static string targetGroupName;// group自定义昵称
     public static string targetPlayfabGroupName;//机器码
 
@@ -32,20 +34,22 @@ public static partial class PlayFabHander
     {
         foreach (var pair in response.Groups)
         {
-            Debug.Log("group name:" + pair.GroupName);
-            // Group name是用房间创建者的设备id命名的
-            if (pair.GroupName == SystemInfo.deviceUniqueIdentifier)
+            //Debug.Log("存在以下 group name:" + pair.GroupName);
+            //Debug.Log("roles count:" + pair.Roles.Count);
+            //Debug.Log("group id:" + pair.Group.Id);
+
+            if (pair.GroupName == tempGroupName)
             {
                 // 加入
                 Debug.Log("试图建立的房间已经存在？加入：" + pair.GroupName);
-                EnterAChannel(pair.GroupName);
+                EnterAChannel(tempGroupName);
                 return;
             }
             //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, pair.Group.Id));
         }
         // 确定没有重名房间已经存在的话，就以自身机器码为名称建立房间
         // 而昵称其实是记在了PlayFabHander.targetGroupName里，随后的成功处理中会以之命名sharedgroupdata
-        CreateGroup(SystemInfo.deviceUniqueIdentifier);
+        CreateGroup(tempGroupName);
     }
 
     /// <summary>
@@ -57,11 +61,38 @@ public static partial class PlayFabHander
         foreach (var pair in response.Groups)
         {
             //EntityGroupPairs.Add(new KeyValuePair<string, string>(prevRequest.Entity.Id, pair.Group.Id));
-            EnterAChannel(pair.GroupName);
-            return;
+            // 不加入自己的星球
+            if (pair.GroupName != SystemInfo.deviceUniqueIdentifier)
+            {
+                EnterAChannel(pair.GroupName);
+                return;
+            }
         }
         Debug.Log(" 没有找到正在语聊中的房间。 ");
         UIDirector.Instance.RefeshUI(LayerMark.Lobby);
+    }
+
+    static void RemoveMember(string memberid)
+    {
+        PlayFabGroupsAPI.RemoveMembers(
+            new RemoveMembersRequest() {
+                Group = new EntityKey
+                {
+                    Id = targetPlayfabGroupName,
+                    Type = "group"
+                },
+                Members = new System.Collections.Generic.List<EntityKey>
+                {
+                    new EntityKey
+                    {
+                        Id = memberid,
+                        Type = "title_player_account"
+                    }
+                }
+            },
+            on => {
+            },
+            OnSharedError);
     }
 
     /// <summary>
@@ -71,7 +102,6 @@ public static partial class PlayFabHander
     /// <param name="groupName"> group 的昵称</param>
     static void CreateGroup(string groupName)
     {
-        Debug.Log("正在playfab上建立如下group："+ groupName);
         PlayFabGroupsAPI.CreateGroup(
             new CreateGroupRequest()
             {
@@ -80,16 +110,25 @@ public static partial class PlayFabHander
             resultCallback => {
                 Debug.Log("成功创建了group" + groupName);
                 // Group创建成功后，继而创建SharedGroup
-                CreateSharedGroup(
-                    targetGroupName,
-                    SystemInfo.deviceUniqueIdentifier,
-                    PlayFabHander.OnCreateSharedGroup,
-                    () => EnterAChannel(SystemInfo.deviceUniqueIdentifier));
+                EnterAChannel(tempGroupName);
+                //CreateSharedGroup(
+                //    targetGroupName,
+                //    tempGroupName,
+                //    PlayFabHander.OnCreateSharedGroup,
+                //    () => EnterAChannel(tempGroupName));
             },
-            OnSharedError);
+            resultCallback => {
+                EnterAChannel(tempGroupName);
+                //CreateSharedGroup(
+                //    targetGroupName,
+                //    tempGroupName,
+                //    PlayFabHander.OnCreateSharedGroup,
+                //    () => EnterAChannel(tempGroupName));
+            }
+        );
     }
 
-    // 当房间人数为0的时候，由客户端主动删除房间
+    // 当房间人数为0的时候，由客户端主动删除房间.必须同时删除所有成员
     public static void DeleteGroup(string groupName)
     {
         PlayFabGroupsAPI.GetGroup(
@@ -100,21 +139,27 @@ public static partial class PlayFabHander
         void Temp(GetGroupResponse response)
         {
             Debug.Log("尝试将已经没有通话的语音房间删除：" + groupName);
-            PlayFabGroupsAPI.DeleteGroup(
-                new DeleteGroupRequest()
-                {
-                    Group = new EntityKey
-                    {
-                        Id = response.Group.Id,
-                        Type = "group"
-                    }
+
+            PlayFabGroupsAPI.RemoveMembers(
+                new RemoveMembersRequest(),
+                    on => {
+                    PlayFabGroupsAPI.DeleteGroup(
+                        new DeleteGroupRequest()
+                        {
+                            Group = new EntityKey
+                            {
+                                Id = response.Group.Id,
+                                Type = "group"
+                            }
+                        },
+                        resultCallback => {
+                            Debug.Log("group已经删除" + groupName);
+                            RemoveSharedGroupMember(groupName, PlayFabHander.myPlayFabId);
+                        },
+                        OnSharedError
+                    );
                 },
-                resultCallback => {
-                    Debug.Log("group已经删除" + groupName);
-                    RemoveSharedGroupMember(groupName, PlayFabHander.myPlayFabId);
-                },
-                OnSharedError
-            );
+            OnSharedError);
         }
     }
 }

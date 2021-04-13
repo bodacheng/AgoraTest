@@ -7,11 +7,22 @@ public class PartyLayer : UILayer
     {
         uiDirector.RefeshUI(LayerMark.Null);
 
+        // 底下这些coment out的本来是randomjoin的逻辑。但因为playfab的运用有些问题，最终放弃了。
+
+        //PlayFabHander.DisposeCustomOnPlayFabJoinAgoraChannel();
+        //PlayFabHander.CustomOnPlayFabJoinAgoraChannel += PlayFabHander.VoiceRoomsCheck;
+
+        //PlayFabHander.DisposeProcessAfterGetGroups();
+        //PlayFabHander.ProcessAfterGetGroups += PlayFabHander.CheckGroupsBeforeJoin;
+        //PlayFabHander.TryStartJoinAgoraProcess();
+
+        PlayFabHander.targetGroupName = "party";
+
         PlayFabHander.DisposeCustomOnPlayFabJoinAgoraChannel();
         PlayFabHander.CustomOnPlayFabJoinAgoraChannel += PlayFabHander.VoiceRoomsCheck;
 
         PlayFabHander.DisposeProcessAfterGetGroups();
-        PlayFabHander.ProcessAfterGetGroups += PlayFabHander.CheckGroupsBeforeJoin;
+        PlayFabHander.ProcessAfterGetGroups += PlayFabHander.CheckGroupsBeforeCreate;
         PlayFabHander.TryStartJoinAgoraProcess();
     }
 

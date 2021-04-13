@@ -9,7 +9,6 @@ public static partial class PlayFabHander
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="groupNickName"></param>
     static void CreateSharedGroup(string groupNickName, string SharedGroupId, Action<CreateSharedGroupResult> onCreateAction, Action onSharedGroupExistAction)
     {
         PlayFabClientAPI.GetSharedGroupData(
@@ -22,38 +21,30 @@ public static partial class PlayFabHander
         );
         void Temp(GetSharedGroupDataResult response)
         {
-            bool normalChannelExist = false;
-
             foreach (var kv in response.Data)
             {
-                if (kv.Key == "name")
+                UpdateSharedGroupDataRequest request = new UpdateSharedGroupDataRequest
                 {
-                    Debug.Log("存在的一个sharedgroupdata的信息如下.  name:" + kv.Value.Value);
-                    if (kv.Value.Value == groupNickName)
+                    SharedGroupId = SharedGroupId,
+                    Data = new Dictionary<string, string>
                     {
-                        normalChannelExist = true;
-                        Debug.Log("获取正常的shared group data：" + SharedGroupId);
+                        { "name", groupNickName }
                     }
-                }
-                //Debug.Log(kv.Key + ":" + kv.Value);
+                };
+                PlayFabClientAPI.UpdateSharedGroupData(request, OnUpdateSharedGroupData, OnSharedError, request.SharedGroupId);
+                onSharedGroupExistAction.Invoke();//更新sharedgroup的名字
+                return;
             }
-            if (!normalChannelExist)
-            {
-                Debug.Log("房间不存在或不正常，尝试创建");
-                PlayFabClientAPI.CreateSharedGroup(
-                    new CreateSharedGroupRequest() {
-                        SharedGroupId = SharedGroupId
-                    },
-                    onCreateAction,
-                    OnSharedError,
-                    groupNickName
-                );
-            }
-            else
-            {
-                // 加入
-                onSharedGroupExistAction.Invoke();
-            };
+            Debug.Log("房间不存在或不正常，尝试创建.sharedGroupid:" + SharedGroupId);
+            PlayFabClientAPI.CreateSharedGroup(
+                new CreateSharedGroupRequest()
+                {
+                    SharedGroupId = SharedGroupId
+                },
+                onCreateAction,
+                OnSharedError,
+                groupNickName
+            );
         };
     }
 

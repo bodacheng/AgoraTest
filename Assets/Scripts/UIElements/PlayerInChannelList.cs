@@ -22,4 +22,15 @@ public class PlayerInChannelList : MonoBehaviour
         if (targetIcon.gameObject != null)
             GameObject.Destroy(targetIcon.gameObject);
     }
+
+    public void Clear()
+    {
+        foreach (KeyValuePair<string, PlayerInfoUI> keyValue in Dic)
+        {
+            PlayerInfoUI targetIcon = keyValue.Value;
+            if (targetIcon.gameObject != null)
+                GameObject.Destroy(targetIcon.gameObject);
+        }
+        Dic.Clear();
+    }
 }
