@@ -3,6 +3,7 @@ using PlayFab.ClientModels;
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Examples.System.Net;
 //using EntityKey = PlayFab.DataModels.EntityKey;
 using PlayFab.GroupsModels;
 
@@ -62,7 +63,7 @@ public static partial class PlayFabHander
                 int returnValue = VoicePartyCenter.Instance.GetIRtcEngine().JoinChannel(channelName, "extra", 0);
                 if (returnValue == 0) // success
                 {
-
+                    WebRequestPostExample.Main();
                 }
                 else if (returnValue < 0)
                 {

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System;
 using PlayFab.GroupsModels;
 using PlayFab;
+using UnityEngine.UI;
 #if(UNITY_2018_3_OR_NEWER)
 using UnityEngine.Android;
 #endif
@@ -23,6 +25,76 @@ public class VoicePartyCenter : MonoBehaviour
     static List<uint> remoteStreams = new List<uint>();
 
     public static VoicePartyCenter Instance;
+
+    List<AUDIO_EFFECT_PRESET> AllVoiceEffects = new List<AUDIO_EFFECT_PRESET>()
+    {
+        AUDIO_EFFECT_PRESET.AUDIO_EFFECT_OFF,
+        AUDIO_EFFECT_PRESET.VOICE_CHANGER_EFFECT_BOY,
+        AUDIO_EFFECT_PRESET.VOICE_CHANGER_EFFECT_GIRL,
+        AUDIO_EFFECT_PRESET.VOICE_CHANGER_EFFECT_HULK,
+        AUDIO_EFFECT_PRESET.VOICE_CHANGER_EFFECT_OLDMAN,
+        AUDIO_EFFECT_PRESET.VOICE_CHANGER_EFFECT_SISTER,
+        AUDIO_EFFECT_PRESET.VOICE_CHANGER_EFFECT_UNCLE,
+        AUDIO_EFFECT_PRESET.ROOM_ACOUSTICS_KTV,
+        AUDIO_EFFECT_PRESET.ROOM_ACOUSTICS_PHONOGRAPH,
+        AUDIO_EFFECT_PRESET.ROOM_ACOUSTICS_SPACIAL,
+        AUDIO_EFFECT_PRESET.ROOM_ACOUSTICS_STUDIO,
+        AUDIO_EFFECT_PRESET.ROOM_ACOUSTICS_VIRTUAL_STEREO,
+        AUDIO_EFFECT_PRESET.ROOM_ACOUSTICS_VOCAL_CONCERT,
+        AUDIO_EFFECT_PRESET.STYLE_TRANSFORMATION_POPULAR,
+        AUDIO_EFFECT_PRESET.STYLE_TRANSFORMATION_RNB,
+        AUDIO_EFFECT_PRESET.VOICE_CHANGER_EFFECT_PIGKING
+    };
+
+    List<VOICE_BEAUTIFIER_PRESET> AllBEAUTIFIEREffects = new List<VOICE_BEAUTIFIER_PRESET>()
+    {
+         VOICE_BEAUTIFIER_PRESET.VOICE_BEAUTIFIER_OFF,
+          VOICE_BEAUTIFIER_PRESET.CHAT_BEAUTIFIER_FRESH,
+           VOICE_BEAUTIFIER_PRESET.CHAT_BEAUTIFIER_MAGNETIC,
+            VOICE_BEAUTIFIER_PRESET.CHAT_BEAUTIFIER_VITALITY,
+             VOICE_BEAUTIFIER_PRESET.TIMBRE_TRANSFORMATION_CLEAR,
+              VOICE_BEAUTIFIER_PRESET.TIMBRE_TRANSFORMATION_DEEP,
+               VOICE_BEAUTIFIER_PRESET.TIMBRE_TRANSFORMATION_FALSETTO,
+                VOICE_BEAUTIFIER_PRESET.TIMBRE_TRANSFORMATION_FULL,
+                 VOICE_BEAUTIFIER_PRESET.TIMBRE_TRANSFORMATION_MELLOW,
+                  VOICE_BEAUTIFIER_PRESET.TIMBRE_TRANSFORMATION_RESOUNDING,
+                   VOICE_BEAUTIFIER_PRESET.TIMBRE_TRANSFORMATION_RINGING,
+                    VOICE_BEAUTIFIER_PRESET.TIMBRE_TRANSFORMATION_VIGOROUS,
+    };
+
+    public Text effecttext; 
+    int i = 0, y = 0;
+    public void SwitchVoice()
+    {
+        if (i < AllVoiceEffects.Count - 1)
+            i++;
+        else
+            i = 0;
+        effecttext.text = "effect " + Enum.GetName(typeof(AUDIO_EFFECT_PRESET), AllVoiceEffects[i]); 
+        mRtcEngine.SetAudioEffectPreset(AllVoiceEffects[i]);
+    }
+
+    public Text beautifultext;
+    public void SwitchAudioEffectPreset()
+    {
+        if (y < AllBEAUTIFIEREffects.Count - 1)
+            y++;
+        else
+            y = 0;
+
+        beautifultext.text = "beautiful " + Enum.GetName(typeof(VOICE_BEAUTIFIER_PRESET), AllBEAUTIFIEREffects[y]);
+        mRtcEngine.SetVoiceBeautifierPreset(AllBEAUTIFIEREffects[y]);
+    }
+
+    public void ToAudience()
+    {
+        mRtcEngine.SetClientRole( CLIENT_ROLE_TYPE.CLIENT_ROLE_AUDIENCE );
+    }
+
+    public void ToBroadCaster()
+    {
+        mRtcEngine.SetClientRole(CLIENT_ROLE_TYPE.CLIENT_ROLE_BROADCASTER);
+    }
 
     public IRtcEngine GetIRtcEngine()
     {

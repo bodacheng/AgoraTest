@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.9.3.0</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.9.4.0</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2019.4.9f1</UnityVersion>
@@ -121,6 +121,7 @@
     <Compile Include="Assets\Scripts\UIElements\PlayerInChannelList.cs" />
     <Compile Include="Assets\Scripts\UIElements\PlayerInfoUI.cs" />
     <Compile Include="Assets\Scripts\VoicePartyCenter.cs" />
+    <Compile Include="Assets\Scripts\WebRequestPostExample.cs" />
     <None Include="Assets\AgoraEngine\Plugins\Android\AgoraAudioKit.plugin\AndroidManifest.xml" />
     <None Include="Assets\AgoraEngine\RTM-Engine\Plugins\Android\AgoraRtmEngineKit.plugin\AndroidManifest.xml" />
     <Reference Include="UnityEngine">
